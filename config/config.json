@@ -16,7 +16,7 @@
   "production": {
     "username": "bc026bc904dec3",
     "password": "3915a973",
-    "database": "abetterme",
+    "database": "heroku_6d64d301b90bb77",
     "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql"
   }
