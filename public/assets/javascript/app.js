@@ -56,6 +56,9 @@ $(document).ready(function () {
             quoteDiv.append(author);
             //displaying it in the html   
             $("#qoute").prepend(quoteDiv);
+
+            //placeholder display
+            //$(".container").prepend(quoteDiv)
         });
     }
 });
