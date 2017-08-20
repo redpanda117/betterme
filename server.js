@@ -25,6 +25,9 @@ app.use("/", index_route);
 var goal_route = require("./routes/cnt_goal.js");
 app.use("/goal", goal_route);
 
+var user_route = require("./routes/cnt_user.js");
+app.use("/user", user_route);
+
 var remark_route = require("./routes/cnt_remark.js");
 app.use("/remark", remark_route);
 

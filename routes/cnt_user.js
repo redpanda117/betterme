@@ -8,21 +8,30 @@ var router = express.Router();
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/findall", function (req, res) {
-
-    db.Goal.findAll({})
+    db.User.findAll({
+        include: [
+            {
+                model: db.Goal,
+                as: "Goals",
+                include: [
+                    {
+                        model: db.Remark,
+                        as: 'Remarks'
+                    }
+                ]
+            }
+        ]
+    })
         .then(function (data) {
             res.json(data);
         });
 });
 
 router.post("/create", function (req, res) {
-    db.Goal.create({
-        //goalID: req.body.goalID,
-        UserUserID: parseInt(req.body.userID),
-        title: req.body.title,
-        startDate: req.body.startDate,
-        endDate: req.body.endDate,
-        description: req.body.description
+    db.User.create({
+        email: req.body.email,
+        DOB: req.body.DOB,
+        fullName: req.body.fullName
     }).then(function () {
         res.redirect("/");
     });
