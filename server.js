@@ -8,7 +8,6 @@ var app = express();
 var port = normalizePort(process.env.PORT || '3020');
 
 "use strict";
-
 app.set('port', port);
 
 app.use(express.static("public"));
