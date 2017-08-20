@@ -9,7 +9,7 @@ $(document).ready(function () {
 
     
 //getting quotes from the qoute.rest api
-        var inspirationalCategory = [
+    var inspirationalCategory = [
         "inspire",
         "management",
         "sports",
@@ -30,7 +30,7 @@ $(document).ready(function () {
 
     function displayQoute(category) {
 
-        var queryURL = "http://quotes.rest/qod.json?category=" + category;
+        var queryURL = "http://quotes.rest/qod.json?category=" + category; 
         //console.log(queryURL);
 
         $.ajax({
@@ -42,9 +42,13 @@ $(document).ready(function () {
             // Storing the quote data
             var quoteData = response.contents.quotes[0].quote;
             var quote = $("<p>").text(quoteData);
-           // console.log(quoteData);
+            //console.log(quoteData);
+            var authorData = response.contents.quotes[0].author;
+            var author = $("<p>").text("By: " + authorData);
+            console.log(authorData);
             //appending it to the div 
             quoteDiv.append(quote);
+            quoteDiv.append(author);
             //displaying it in the html   
             //$("#qoute").prepend(quoteDiv);
             
