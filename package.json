@@ -6,6 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
+    "commit": "git commit -m 'automated commit' origin master",
+    "push": "git push origin master",
+    "deploy": "git push heroku master",
+    "open": "heroku open"
+    "build": "npm-run-series commit push deploy open"
   },
   "repository": {
     "type": "git",
@@ -29,6 +34,7 @@
     "mysql": "^2.14.1",
     "mysql2": "^1.4.0",
     "npm": "^5.3.0",
+    "npm-run-series": "^1.0.0",
     "sequelize": "^4.6.0"
   }
 }
