@@ -7,15 +7,15 @@
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "abetterme",
-    "host": "127.0.0.1",
+    "username": "bc026bc904dec3",
+    "password": "3915a973",
+    "database": "heroku_6d64d301b90bb77",
+    "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql"
   },
   "production": {
     "username": "bc026bc904dec3",
-    "password": '3915a973',
+    "password": "3915a973",
     "database": "abetterme",
     "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql"
