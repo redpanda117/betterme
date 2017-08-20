@@ -50,10 +50,10 @@ $(document).ready(function () {
             quoteDiv.append(quote);
             quoteDiv.append(author);
             //displaying it in the html   
-            //$("#qoute").prepend(quoteDiv);
+            $("#qoute").prepend(quoteDiv);
             
             //placeholder display
-            $(".container").prepend(quoteDiv)
+            //$(".container").prepend(quoteDiv)
         });
     }
 });
