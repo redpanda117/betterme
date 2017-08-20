@@ -1,9 +1,3 @@
-/**
- * Created by bernardwilliams on 8/19/17.
- */
-
-
-
 var db = require("../models");
 
 module.exports = function (sequelize, DataTypes) {
