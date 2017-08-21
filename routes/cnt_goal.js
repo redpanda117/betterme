@@ -11,8 +11,7 @@ router.get("/findall", function (req, res) {
 
     db.Goal.findAll({
         include: [{
-            model: db.Remark,
-            as: "Remarks"
+            model: db.Remark
         }]
     })
         .then(function (data) {
