@@ -9,7 +9,12 @@ var router = express.Router();
 // Create all our routes and set up logic within those routes where required.
 router.get("/findall", function (req, res) {
 
-    db.Goal.findAll({})
+    db.Goal.findAll({
+        include: [{
+            model: db.Remark,
+            as: "Remarks"
+        }]
+    })
         .then(function (data) {
             res.json(data);
         });

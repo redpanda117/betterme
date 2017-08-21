@@ -22,10 +22,6 @@ module.exports = function (sequelize, DataTypes) {
 
     Goal.associate = function (db) {
         Goal.belongsTo(db.User);
-        Goal.hasMany(db.Remark,
-            {
-                onDelete: "cascade"
-            });
     }
     return Goal;
 }

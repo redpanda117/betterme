@@ -1,6 +1,7 @@
 var db = require("../models");
 
 module.exports = function(sequelize, DataTypes) {
+    "use strict";
     var Remark = sequelize.define("Remark", {
 
         remarkID: {
@@ -14,8 +15,7 @@ module.exports = function(sequelize, DataTypes) {
         remark: DataTypes.TEXT
     });
     Remark.associate = function(db) {
-        Remark.belongsTo(db.Goal, {
-        });
+        Remark.belongsTo(db.Goal);
     }
     return Remark;
-}
+};
