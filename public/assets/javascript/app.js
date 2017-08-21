@@ -5,10 +5,19 @@
 
 $(document).ready(function () {
 
-    //Insert code to do Firebase
+    
+// Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDpg00CoaceDDDP8itC8OJ0wYzCJjXPIps",
+    authDomain: "abetterme-b30cc.firebaseapp.com",
+    databaseURL: "https://abetterme-b30cc.firebaseio.com",
+    projectId: "abetterme-b30cc",
+    storageBucket: "abetterme-b30cc.appspot.com",
+    messagingSenderId: "248549609031"
+  };
+  firebase.initializeApp(config);
 
-
-    //getting quotes from the qoute.rest api
+//getting quotes from the qoute.rest api
     var inspirationalCategory = [
         "inspire",
         "management",
