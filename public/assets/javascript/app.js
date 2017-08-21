@@ -82,7 +82,7 @@ $(document).ready(function () {
 
     function displayQoute(category) {
 
-        var queryURL = "http://quotes.rest/qod.json?category=" + category;
+        var queryURL = "https://quotes.rest/qod.json?category=" + category;
         //console.log(queryURL);
 
         $.ajax({
