@@ -18,7 +18,7 @@ router.get("/findall", function (req, res) {
 router.post("/create", function (req, res) {
     db.Remark.create({
         remarkID: req.body.remarkID,
-        goalID: req.body.goalID,
+        GoalGoalID: parseInt(req.body.goalID),
         remark: req.body.remark
     }).then(function () {
         res.redirect("/");
