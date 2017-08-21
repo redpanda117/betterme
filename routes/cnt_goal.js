@@ -19,6 +19,21 @@ router.get("/findall", function (req, res) {
         });
 });
 
+router.post("/find", function (req, res) {
+
+    db.Goal.findAll({
+        include: [{
+            model: db.Remark
+        }],
+        where: {
+            UserUserID: parseInt(req.body.userID)
+        }
+    })
+        .then(function (data) {
+            res.json(data);
+        });
+});
+
 router.post("/create", function (req, res) {
     db.Goal.create({
         //goalID: req.body.goalID,
