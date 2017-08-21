@@ -1,297 +1,147 @@
 /* 
-Bernard Williams
-UCF Bootcamp APR2017 Week 7
-Trivia Game
+Bernard Williams, Tina Nguyen, and Melissa Renaut
+UCF Bootcamp Aug2017 Week 17
+A Better Me
 */
 
-/*Custom Classes*/
-
-.mainHeader {
-    border-bottom-style: solid;
-    border-bottom-width: 2px;
-    border-bottom-color: slategray;
-}
-
-.mainArea {
-    height: 800px;
-}
-
-.footer {
-    width: 100%;
-    /* Set the fixed height of the footer here */
-    height: 50px;
-    background-color: #222;
-    color: white;
-    text-align: center;
-    padding: 15px;
-}
-
-.bottomPadding {
-    padding-bottom: 60px;
-}
-
-.theWord {
-    text-align: center;
-    font-size: x-large;
-    color: black;
-    letter-spacing: 15px;
-}
-
-.perfLabel {
-    font-weight: bold;
-    clear: both;
-    height: 30px;
-    width: 200px;
-    background-color: papayawhip;
-    border-color: slategray;
-    border-width: 1px;
-    border-style: solid;
-    padding: 10px;
-    margin-bottom: 15px;
-}
-
-/*Element Classes*/
-
-button {
-    padding: 5px;
-    margin: 5px;
-}
-
-.buttonRight {
-    position: relative;
-    width: 100%;
-}
-
-.devoured {
-    right: 0px;
-}
-
-label {
-    font-size: x-large;
-    font-weight: bold;
-    color: #122b40;
-}
-
-a {
-    text-decoration: none;
-}
-
 body {
-    background-image: url("../images/hamburger.jpg");
-    background-size: cover;
-}
-
-div.sideBarHeader {
-    font-size: large;
-    border-bottom: 2px solid slategray;
-    font-weight: bold;
-    margin-bottom: 15px;
-    font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-.question-label {
-    font-size: large;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 15px;
-    margin-right: 15px;
-}
-
-.question-group {
-    margin-top: 20px;
-    margin-bottom: 15px;
-}
-.survey-title {
-    font-size: xx-large;
-    font-weight: bold;
-    margin-bottom: 15px;
-
-}
-.question {
-    font-size: medium;
-    font-weight: normal;
-}
-
-div.sideBar {
-    color: #777777;
-    text-align: center;
-}
-
-th {
-    font-weight: bold;
-}
-
-/*ID Classes*/
-
-#contactLink {
-    height: 60px;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-#logo {
-    max-height: 150px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#hangManState {
-    max-height: 250px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Extending bootstrap classes*/
-
-.panel-title, .panel-footer {
-    font-size: larger;
-    font-weight: bold;
-    font-family: Arial;
+	background-image: url("../images/background.JPG");
+	background-size: cover;
 
 }
 
-.answer {
-    background: rgba(136, 136, 136, .75);
-    color: floralwhite;
-    margin-left: 20px;
-    margin-bottom: 5px;
-    height: 35px;
-    padding-bottom: 5px;
-    border-radius: 9px;
+
+/*title styles*/
+
+h1 {
+	color: white;
+	/*may cause issues in repsonsive design*/
+	font-size: 320%;
+	font-family: snap ITC;
+	text-align: center;
+	margin-bottom: 20px;
+	
 
 }
 
-.rightAnswer {
-    border-style: solid;
-    border-width: 5px;
-    border-color: greenyellow;
+h2 {
+	color: #06a4e3;
+	font-family: Arial Rounded MT;
+	text-align: center;
+	/*may cause issues in repsonsive design*/
+	font-size: 150%;
+	padding-top: 10px;
+	
 }
 
-.wrongAnswer {
-    border-style: solid;
-    border-width: 5px;
-    border-color: red;
+h3 {
+	color: #06a4e3;
+	font-style: Kozuka Gothic Pro;
+	font-weight: bold;
 }
 
-.answer:hover {
-    background: rgba(244, 158, 66, .5);
-    font-weight: bold;
-
+#buttonsDiv{
+	text-align: center;
+	margin-top: 10px;
 }
 
-.answerText {
-    margin-left: 10px;
-    position: relative;
-    top: 4px;
-    font-family: Arial;
+.btn-circle {
+	border-radius: 50%;
+	color: #2a3273;
+	font-family: snap ITC;
+	padding: 2px;
+	width: 90px;
+	height: 90px;
+	margin-bottom: 50px;
+	text-align: center;
 }
 
-.answerIcon {
-    margin-left: 10px;
-    position: relative;
-
-    top: 7px;
+#instructionsButton {
+	font-size: 80%;
+	margin-right: 5%;
+	-webkit-box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
+	-moz-box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
+	box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
+	
+	
 }
 
-.buttonBar {
-    margin-top: 20px;
+#goalsButton {
+	font-size: 80%;
+	-webkit-box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
+	-moz-box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
+	box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
+	@-moz-keyframes spin {
+		from { -moz-transform: rotate(0deg); }
+		to { -moz-transform: rotate(360deg); }
+	}
+	@-webkit-keyframes spin {
+		from { -webkit-transform: rotate(0deg); }
+		to { -webkit-transform: rotate(360deg); }
+	}
+	@keyframes spin {
+		from {transform:rotate(0deg);}
+		to {transform:rotate(360deg);}
+	}
 }
 
-#display {
 
+#quotePanel {
+	background-color: white;
+	margin: 2% 1%;
+	text-align: center border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 5px solid #2a3273;
+	-webkit-box-shadow: 0px 0px 85px 2px rgba(250,250,247,1);
+	-moz-box-shadow: 0px 0px 85px 2px rgba(250,250,247,1);
+	box-shadow: 0px 0px 85px 2px rgba(250,250,247,1);
 }
 
-#progressHeader {
-    margin-bottom: 5px;
+p {
+	color: #868bb0;
+	font-size: 90%;
 }
 
-.panel-transparent {
-    background: rgba(255, 255, 255, .85);
-    position: relative;
+#todaysGoalsPanel {
+	background-color: white;	
+	padding: 5px;
+	text-align: center border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 5px solid #2a3273;
 }
 
-.well-transparent {
-    background: rgba(136, 136, 136, .5);
-    color: floralwhite;
-    margin-top: 20px;
+#task {
+	
+	border-radius: 0px 3px 3px 3px;
+	-moz-border-radius: 0px 3px 3px 3px;
+	-webkit-border-radius: 0px 3px 3px 3px;
+	border: 2px solid #afa6f5;
+	}
+
+
+#completedButton {
+	background-color: #2fe782; !important;
 }
 
-.progress {
-    margin-top: 10px;
+
+#goalsButtonsDiv {
+	margin-top: 10px;
+	text-align: center;
+		
 }
 
-#startBtn, #resetBtn {
-    margin-left: 20px;
-    margin-bottom: 30px;
+#homeButton {
+	margin-right: 40px;
+	
 }
 
-.info {
-    padding: 10px;
-    background: rgba(136, 136, 136, .75);
-    color: floralwhite;
-    margin-top: 20px;
-    border-radius: 5px;
-    border-style: solid;
-    border-width: 2px;
-    border-color: #269abc;
-
+#editGoalsButton {
+	
 }
 
-.media-image {
-    width: 125px;
+#starImage {
+	max-height: 200px;
+	margin: auto;
 }
-
-.player:hover {
-    border: 1px solid orange;
-}
-
-.container {
-    width: 100%;
-
-}
-
-#next, #prev {
-    margin: 20px;
-}
-
-.media p {
-    color: darkslategray;
-}
-
-.media-heading {
-    font-weight: bold;
-}
-
-.healthPoints {
-    margin-left: 20px;
-}
-
-.badge-warning {
-    background-color: #d58512;
-}
-
-.badge-success {
-    background-color: #398439;
-}
-
-.badge-info {
-    background-color: #269abc;
-}
-
-.badge-inverse {
-    background-color: #333333;
-}
-
-.badge-danger {
-    background-color: #d43f3a;
-}
-
-.panelBorder {
-    border: 1px solid whitesmoke;
-}
-
-#fightSection {
-    color: greenyellow;
-    font-weight: bold;
-}
-
