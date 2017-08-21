@@ -5,7 +5,40 @@
 
 $(document).ready(function () {
 
-    //Insert code to do Firebase
+
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDpg00CoaceDDDP8itC8OJ0wYzCJjXPIps",
+        authDomain: "abetterme-b30cc.firebaseapp.com",
+        databaseURL: "https://abetterme-b30cc.firebaseio.com",
+        projectId: "abetterme-b30cc",
+        storageBucket: "abetterme-b30cc.appspot.com",
+        messagingSenderId: "248549609031"
+    };
+    firebase.initializeApp(config);
+
+    //google authentication
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+
+    firebase.auth().signInWithPopup(provider).then(function (result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        // ...
+    }).catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+
+    });
+
 
 
     //getting quotes from the qoute.rest api
