@@ -49,6 +49,20 @@ router.post("/create", function (req, res) {
     });
 });
 
+router.post("/update", function (req, res) {
+    db.User.update({
+        email: req.body.email,
+        DOB: req.body.DOB,
+        fullName: req.body.fullName,
+        where: {
+            email: req.body.email
+        }
+    }).then(function () {
+        res.redirect("/");
+    });
+});
+
+
 router.post("/del", function (req, res) {
     db.User.destroy({
         where: {

@@ -47,6 +47,20 @@ router.post("/create", function (req, res) {
     });
 });
 
+router.post("/update", function (req, res) {
+    db.Goal.update({
+        title: req.body.title,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        description: req.body.description,
+        where: {
+            goalID: req.body.goalID
+        }
+    }).then(function () {
+        res.redirect("/");
+    });
+});
+
 router.post("/del", function (req, res) {
     db.Goal.destroy({
         where: {

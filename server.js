@@ -32,7 +32,7 @@ app.use("/user", user_route);
 var remark_route = require("./routes/cnt_remark.js");
 app.use("/remark", remark_route);
 
-db.sequelize.sync().then(function () {
+db.sequelize.sync({force: true}).then(function () {
     app.listen(port,
         function () {
             console.log("App listening on PORT " + port);
