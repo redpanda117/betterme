@@ -26,6 +26,8 @@ $(document).ready(function () {
             if (user) {
                 // User is signed in.
                 //works but need to findout how to redirect when user already login
+                //window.location = 'home.html';
+                console.log(user.email);
             } else {
                 // User is signed out. 
                 firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -33,7 +35,8 @@ $(document).ready(function () {
                     var token = result.credential.accessToken;
                     // The signed-in user info.
                     var user = result.user;
-                    // ...
+                    // loging the user email
+                    console.log(user.email);
                 }).catch(function (error) {
                     // Handle Errors here.
                     var errorCode = error.code;
@@ -56,6 +59,7 @@ $(document).ready(function () {
             console.log("signout");
         }).catch(function (error) {
             // An error happened.
+             console.error('Sign Out Error', error);
         });
          */
 
@@ -107,7 +111,7 @@ $(document).ready(function () {
             quoteDiv.append(quote);
             quoteDiv.append(author);
             //displaying it in the html   
-            $("#qoute").prepend(quoteDiv);
+            $("#quote").prepend(quoteDiv);
 
             //placeholder display
             //$(".container").prepend(quoteDiv)
