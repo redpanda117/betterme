@@ -1,11 +1,9 @@
-#API Documentation
+# API Documentation
 
 
-##User Entity
+## User Entity
 
-###Entity service calls
-
-####Create New User
+#### Create New User
 Method Call: **POST** /user/create
 
 **Parameters**
@@ -24,9 +22,9 @@ var settings = {
     "content-type": "application/x-www-form-urlencoded"
   },
   "data": {
-    "email": "Melissa.Renaut@gmail.com",
+    "email": "currentuser@gmail.com",
     "DOB": "2017-01-07",
-    "fullName": "Melissa Renaut"
+    "fullName": "Amber Mercedes"
   }
 }
 
@@ -34,5 +32,25 @@ $.ajax(settings).done(function (response) {
   console.log(response);
 });
 ```
- 
+
+#### Find all users
+Method Call: **POST** /user/findall
+
+**Parameters**
+ - none
+
+Example code:
+```javascript
+var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://localhost:3020/user/findall",
+  "method": "GET",
+  "headers": {}
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+```
 
