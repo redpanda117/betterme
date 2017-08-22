@@ -36,8 +36,18 @@ h2 {
 
 h3 {
 	color: #06a4e3;
-	font-style: Kozuka Gothic Pro;
 	font-weight: bold;
+	font-family: snap ITC;
+	text-align: center;
+}
+
+h4{
+	color: #2a3273;
+	font-size: 250%;
+}
+
+h5{
+	color: #2a3273;
 }
 
 #buttonsDiv{
@@ -57,38 +67,33 @@ h3 {
 }
 
 #instructionsButton {
-	font-size: 80%;
+	background-color: white;
+	font-size: 65%;
 	margin-right: 5%;
 	-webkit-box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
 	-moz-box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
 	box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
-	
-	
+	text-align: center;
+		
 }
 
+
+
 #goalsButton {
-	font-size: 80%;
+	background-color: white;
+	font-size: 65%;
 	-webkit-box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
 	-moz-box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
 	box-shadow: 0px 0px 85px 2px rgba(245,241,115,1);
-	@-moz-keyframes spin {
-		from { -moz-transform: rotate(0deg); }
-		to { -moz-transform: rotate(360deg); }
-	}
-	@-webkit-keyframes spin {
-		from { -webkit-transform: rotate(0deg); }
-		to { -webkit-transform: rotate(360deg); }
-	}
-	@keyframes spin {
-		from {transform:rotate(0deg);}
-		to {transform:rotate(360deg);}
-	}
+	text-align: center;
+
 }
+
 
 
 #quotePanel {
 	background-color: white;
-	margin: 2% 1%;
+	margin: 2% 2%;
 	text-align: center border-radius: 10px 10px 10px 10px;
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
@@ -100,7 +105,7 @@ h3 {
 
 p {
 	color: #868bb0;
-	font-size: 90%;
+	font-size: 100%;
 }
 
 #todaysGoalsPanel {
@@ -141,7 +146,91 @@ p {
 	
 }
 
+
+/*in instructions module2*/
 #starImage {
 	max-height: 200px;
 	margin: auto;
+}
+
+/*in instructions module2*/
+#starImage {
+	max-height: 200px;
+	margin: auto;
+}
+
+/*in instructions module2*/
+#starImage {
+	max-height: 200px;
+	margin: auto;
+}
+
+#scoreboardPanel {
+	background-color: #2a3273;
+}
+
+
+#scoreboardHeading {
+	color: white;
+	background-color: #2a3273;
+	font-family: snap ITC;
+	text-align: center;
+	
+	
+}
+
+
+h6 {
+	color: white;
+	background-color: #2a3273;
+	padding: 2px;
+	
+	font-family: snap ITC;
+	font-size: 150%;
+}
+
+#smallStarImage {
+	display: inline-block;
+	
+	max-height: 30px;
+	
+}
+
+#supernovaImage {
+	display: inline-block;
+	max-height: 28px;
+
+}
+
+#neutronStarImage {
+	display: inline-block;
+	max-height: 30px;
+}
+
+/*all three score buttons*/
+#goldStarBadge, #neutronStarBadge, #supernovaBadge {
+	background-color: #070524;
+	border-radius: 10px 10px 10px 10px;
+	-moz-border-radius: 10px 10px 10px 10px;
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border: 0px solid #000000;
+}
+
+/*
+.btn-default {
+	background-color: #06a4e3;
+}*/
+
+button {
+	background-color: transparent;
+	text-decoration: underline;
+}
+
+button:hover {
+	color: black ;
+	background-color: #def ;
+}
+
+ul.a {
+	list-style-type: circle;
 }

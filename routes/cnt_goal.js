@@ -19,6 +19,21 @@ router.get("/findall", function (req, res) {
         });
 });
 
+router.post("/find", function (req, res) {
+
+    db.Goal.findAll({
+        include: [{
+            model: db.Remark
+        }],
+        where: {
+            UserUserID: parseInt(req.body.userID)
+        }
+    })
+        .then(function (data) {
+            res.json(data);
+        });
+});
+
 router.post("/create", function (req, res) {
     db.Goal.create({
         //goalID: req.body.goalID,
@@ -27,6 +42,30 @@ router.post("/create", function (req, res) {
         startDate: req.body.startDate,
         endDate: req.body.endDate,
         description: req.body.description
+    }).then(function () {
+        res.redirect("/");
+    });
+});
+
+router.post("/update", function (req, res) {
+    db.Goal.update({
+        title: req.body.title,
+        startDate: req.body.startDate,
+        endDate: req.body.endDate,
+        description: req.body.description,
+        where: {
+            goalID: req.body.goalID
+        }
+    }).then(function () {
+        res.redirect("/");
+    });
+});
+
+router.post("/del", function (req, res) {
+    db.Goal.destroy({
+        where: {
+            UserUserID: parseInt(req.body.userID)
+        }
     }).then(function () {
         res.redirect("/");
     });
