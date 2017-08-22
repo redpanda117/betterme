@@ -21,11 +21,39 @@ router.get("/findall", function (req, res) {
         });
 });
 
+router.post("/find", function (req, res) {
+
+    db.User.findAll({
+        include: [{
+            model: db.Goal,
+            include: [{
+                model: db.Remark
+            }]
+        }],
+        where: {
+            email: req.body.email
+        }
+    })
+        .then(function (data) {
+            res.json(data);
+        });
+});
+
 router.post("/create", function (req, res) {
     db.User.create({
         email: req.body.email,
         DOB: req.body.DOB,
         fullName: req.body.fullName
+    }).then(function () {
+        res.redirect("/");
+    });
+});
+
+router.post("/del", function (req, res) {
+    db.User.destroy({
+        where: {
+            email: req.body.email
+        }
     }).then(function () {
         res.redirect("/");
     });

@@ -47,5 +47,15 @@ router.post("/create", function (req, res) {
     });
 });
 
+router.post("/del", function (req, res) {
+    db.Goal.destroy({
+        where: {
+            UserUserID: parseInt(req.body.userID)
+        }
+    }).then(function () {
+        res.redirect("/");
+    });
+});
+
 // Export routes for server.js to use.
 module.exports = router;
