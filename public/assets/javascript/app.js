@@ -23,11 +23,33 @@ $(document).ready(function () {
     //google sign in if before going to goals page 
     $("#goalsButton").on("click", function (event) {
         firebase.auth().onAuthStateChanged(function (user) {
+
             if (user) {
+<<<<<<< HEAD
                 // User is signed in.
                 //works but need to findout how to redirect when user already login
                 //window.location = 'home.html';
                 console.log(user.email);
+=======
+                var displayName = user.displayName;
+                var email = user.email;
+                var emailVerified = user.emailVerified;
+                var photoURL = user.photoURL;
+                var uid = user.uid;
+                var phoneNumber = user.phoneNumber;
+                var providerData = user.providerData;
+                sessionStorage.setItem('displayName', displayName);
+                sessionStorage.setItem('email', email);
+                sessionStorage.setItem('emailVerified', emailVerified);
+                sessionStorage.setItem('photoURL', photoURL);
+                sessionStorage.setItem('uid', uid);
+                sessionStorage.setItem('phoneNumber', phoneNumber);
+                sessionStorage.setItem('providerData', providerData);
+
+                console.log(photoURL);
+                loadGoals(email);
+
+>>>>>>> 448e858a86d655d9e45cd8e612b6458dfdaae178
             } else {
                 // User is signed out. 
                 firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -52,7 +74,7 @@ $(document).ready(function () {
         });
 
     })
-    
+
     /* signout event need to find out where this will be place.                    
         firebase.auth().signOut().then(function () {
             // Sign-out successful.
@@ -118,3 +140,21 @@ $(document).ready(function () {
         });
     }
 });
+
+
+function loadGoals(userEmail) {
+    var queryURL = "/user/find"
+console.log("loadGoals userEmail: " + userEmail)
+    $.ajax({
+        url: queryURL,
+        method: "POST",
+        data: {
+            email: userEmail
+        }
+    }).done(function (response) {
+
+        console.log(response);
+    });
+
+
+}
