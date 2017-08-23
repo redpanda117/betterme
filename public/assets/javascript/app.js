@@ -42,6 +42,7 @@ $(document).ready(function () {
 
                 console.log(photoURL);
                 loadGoals(email);
+
             } else {
                 // User is signed out. 
                 firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -142,6 +143,7 @@ console.log("loadGoals userEmail: " + userEmail)
             email: userEmail
         }
     }).done(function (response) {
+
         console.log(response);
     });
 
