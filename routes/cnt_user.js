@@ -22,7 +22,7 @@ router.get("/findall", function (req, res) {
 });
 
 router.post("/find", function (req, res) {
-
+    console.log("This is the request body of the find  API: " + JSON.stringify(req.body));
     db.User.findAll({
         include: [{
             model: db.Goal,
