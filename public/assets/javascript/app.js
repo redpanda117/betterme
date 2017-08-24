@@ -25,12 +25,12 @@ $(document).ready(function () {
         firebase.auth().onAuthStateChanged(function (user) {
 
             if (user) {
-<<<<<<< HEAD
+//<<<<<<< HEAD
                 // User is signed in.
                 //works but need to findout how to redirect when user already login
                 //window.location = 'home.html';
                 console.log(user.email);
-=======
+//=======
                 var displayName = user.displayName;
                 var email = user.email;
                 var emailVerified = user.emailVerified;
@@ -49,7 +49,7 @@ $(document).ready(function () {
                 console.log(photoURL);
                 loadGoals(email);
 
->>>>>>> 448e858a86d655d9e45cd8e612b6458dfdaae178
+//>>>>>>> 448e858a86d655d9e45cd8e612b6458dfdaae178
             } else {
                 // User is signed out. 
                 firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -152,7 +152,12 @@ console.log("loadGoals userEmail: " + userEmail)
             email: userEmail
         }
     }).done(function (response) {
-
+        if(response === "null"){
+            
+        }else{
+            
+        }
+           
         console.log(response);
     });
 
