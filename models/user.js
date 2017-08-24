@@ -13,7 +13,9 @@ module.exports = function (sequelize, DataTypes) {
         },
         email: DataTypes.STRING,
         DOB: DataTypes.DATEONLY,
-        fullName: DataTypes.STRING
+        fullName: DataTypes.STRING,
+        goalsCompleted: DataTypes.INTEGER
+
     });
 
     User.associate = function(db) {

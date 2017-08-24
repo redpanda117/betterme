@@ -57,6 +57,8 @@ router.post("/update", function (req, res) {
         description: req.body.description,
         difficulty: req.body.difficulty,
         status: req.body.status,
+        goalsCompleted: req.body.goalsCompleted,
+
         where: {
             goalID: req.body.goalID
         }
