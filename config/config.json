@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "bn19",
+=======
+    "password": null,
+>>>>>>> 9e9edd5b0043c3b99e05b7b91345a5ad295496d4
     "database": "abetterme",
     "host": "127.0.0.1",
     "dialect": "mysql"

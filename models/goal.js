@@ -17,7 +17,8 @@ module.exports = function (sequelize, DataTypes) {
         startDate: DataTypes.DATEONLY,
         endDate: DataTypes.DATEONLY,
         difficulty: DataTypes.INTEGER,
-        description: DataTypes.TEXT
+        description: DataTypes.TEXT,
+        status: DataTypes.STRING
     });
 
     Goal.associate = function (db) {

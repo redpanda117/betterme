@@ -5,6 +5,7 @@
 
 $(document).ready(function () {
 
+    var fullName = "";
 
     // Initialize Firebase
     var config = {
@@ -141,10 +142,9 @@ $(document).ready(function () {
     }
 });
 
-
 function loadGoals(userEmail) {
     var queryURL = "/user/find"
-console.log("loadGoals userEmail: " + userEmail)
+    console.log("loadGoals userEmail: " + userEmail)
     $.ajax({
         url: queryURL,
         method: "POST",
@@ -152,14 +152,65 @@ console.log("loadGoals userEmail: " + userEmail)
             email: userEmail
         }
     }).done(function (response) {
+<<<<<<< HEAD
         if(response === "null"){
             
         }else{
             
         }
            
+=======
+        $('#userName').text(sessionStorage.getItem("displayName") + "   ");
+>>>>>>> 9e9edd5b0043c3b99e05b7b91345a5ad295496d4
         console.log(response);
+        populateGoalTable(response);
     });
-
-
 }
+
+function populateGoalTable(res) {
+
+    $('#goalTable').empty();
+    console.log(res[0]);
+    var goals = res[0].Goals;
+
+    console.log(goals);
+
+    for (var i = 0; i < goals.length; i++) {
+
+        var goal = goals[i];
+        var $deleteButton = $('<i>');
+        $deleteButton.addClass("fa fa-trash-o");
+        $deleteButton.attr('aria-hidden', 'true');
+        $deleteButton.attr('id', goals[i].goalID);
+        $deleteButton.on('click', function  () {
+            console.log(goals[i].goalID);
+        });
+
+        var $newRow = $('<tr>');
+        var $newGoalTitle = $('<td>');
+        var $newStartDate = $('<td>');
+        var $newEndDate = $('<td>');
+        var $newDifficulty = $('<td>');
+        var $newStatus = $('<td>');
+        var $delBtnCell = $('<td>');
+
+
+        $newGoalTitle.text(goal.title);
+        $newStartDate.text(goal.startDate);
+        $newEndDate.text(goal.endDate);
+        $newDifficulty.text(goal.difficulty);
+        $newStatus.text(goal.status);
+
+        $delBtnCell.append($deleteButton);
+        $newRow.append('<td></td>');
+        $newRow.append($delBtnCell);
+        $newRow.append($newGoalTitle);
+        $newRow.append($newStartDate);
+        $newRow.append($newEndDate);
+        $newRow.append($newDifficulty);
+        $newRow.append($newStatus);
+
+        $('#goaltable').append($newRow);
+    }
+}
+
