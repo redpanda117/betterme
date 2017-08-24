@@ -41,7 +41,9 @@ router.post("/create", function (req, res) {
         title: req.body.title,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
-        description: req.body.description
+        description: req.body.description,
+        difficulty: req.body.difficulty,
+        status: req.body.status
     }).then(function () {
         res.redirect("/");
     });
@@ -53,6 +55,8 @@ router.post("/update", function (req, res) {
         startDate: req.body.startDate,
         endDate: req.body.endDate,
         description: req.body.description,
+        difficulty: req.body.difficulty,
+        status: req.body.status,
         where: {
             goalID: req.body.goalID
         }
