@@ -57,6 +57,8 @@ router.post("/update", function (req, res) {
         description: req.body.description,
         difficulty: req.body.difficulty,
         status: req.body.status,
+        goalsCompleted: req.body.goalsCompleted,
+
         where: {
             goalID: req.body.goalID
         }
@@ -66,9 +68,11 @@ router.post("/update", function (req, res) {
 });
 
 router.post("/del", function (req, res) {
+
+    console.log('Delete: ' + JSON.stringify(req.body));
     db.Goal.destroy({
         where: {
-            UserUserID: parseInt(req.body.userID)
+            goalID: parseInt(req.body.goalID)
         }
     }).then(function () {
         res.redirect("/");
