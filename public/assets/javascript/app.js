@@ -32,6 +32,11 @@ $(document).ready(function () {
         firebase.auth().onAuthStateChanged(function (user) {
 
             if (user) {
+                // User is signed in.
+                //works but need to findout how to redirect when user already login
+                //window.location = 'home.html';
+                console.log(user.email);
+                //=======
                 var displayName = user.displayName;
                 var email = user.email;
                 var emailVerified = user.emailVerified;
@@ -50,6 +55,7 @@ $(document).ready(function () {
                 console.log(photoURL);
 
 
+
             } else {
                 // User is signed out. 
                 firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -57,7 +63,8 @@ $(document).ready(function () {
                     var token = result.credential.accessToken;
                     // The signed-in user info.
                     var user = result.user;
-                    // ...
+                    // loging the user email
+                    console.log(user.email);
                 }).catch(function (error) {
                     // Handle Errors here.
                     var errorCode = error.code;
@@ -74,15 +81,17 @@ $(document).ready(function () {
 
     })
 
-    /* signout event need to find out where this will be place.                    
+   //  signout event need to find out where this will be place.
+   /* $("#goalsButton").on("click", function (event) {
         firebase.auth().signOut().then(function () {
             // Sign-out successful.
             console.log("signout");
         }).catch(function (error) {
             // An error happened.
+             console.error('Sign Out Error', error);
         });
-         */
-
+    }
+*/
 
     //getting quotes from the qoute.rest api
     var inspirationalCategory = [
@@ -131,14 +140,13 @@ $(document).ready(function () {
             quoteDiv.append(quote);
             quoteDiv.append(author);
             //displaying it in the html   
-            $("#qoute").prepend(quoteDiv);
+            $("#quote").prepend(quoteDiv);
 
             //placeholder display
             //$(".container").prepend(quoteDiv)
         });
     }
 });
-
 function loadGoals() {
     var queryURL = "/user/find"
     console.log("loadGoals userEmail: " + sessionStorage.getItem('email'));
@@ -225,18 +233,38 @@ function populateGoalTable(res) {
             $("#goalTable").append($newRow);
             console.log("add new row")
         }
-
-
     }
 }
 
+function addGoal(){
+    var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://abetterme.herokuapp.com/goal/create",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/x-www-form-urlencoded"
+  },
+  "data": {
+    "title": $("#titleInput").val().trim(),
+    "startDate": $("#startDateInput").val(),
+    "endDate": $("#endDateInput").val(),
+    "difficulty": $("difficultySelect").val(),  
+    "description": $("#descriptionInput").val().trim(),
+  }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+    return(settings.data);
+});
+}
+
+$("#submitNewGoal").on("click", function() {
+	addGoal();
+});
 
 function createNewUser() {
-	
-	
-	
-
-
 	var settings = {
 		"async": true,
 		"crossDomain": true,
