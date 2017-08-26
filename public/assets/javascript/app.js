@@ -125,16 +125,17 @@ $(document).ready(function () {
             // Creating a div to hold the Quote
             var quoteDiv = $("<div class='randomQuote'>");
             //adding a bootstrap class to the new div. Help in not needing to use floats in the css
-            quoteDiv.addClass("show col-md-6");
+            quoteDiv.addClass("show col-4");
             // Storing the quote data
             var quoteData = response.contents.quotes[0].quote;
-            var quote = $("<p>").text(quoteData);
+            var quote = $("<h2>").text(quoteData);
             quote.attr("id", "randomQuote");
             //console.log(quoteData);
             //store author data
             var authorData = response.contents.quotes[0].author;
             var author = $("<p>").text("By: " + authorData);
             author.attr("id", "randomAuthor");
+		  author.addClass("pull-right");
             //console.log(authorData);
             //appending it to the div 
             quoteDiv.append(quote);
@@ -264,7 +265,15 @@ $("#submitNewGoal").on("click", function() {
 	addGoal();
 });
 
+
+
+
+
+
+//function to Create a new user//
 function createNewUser() {
+
+
 	var settings = {
 		"async": true,
 		"crossDomain": true,
@@ -281,21 +290,54 @@ function createNewUser() {
 	};
 	$.ajax(settings).done(function(response) {
 		return(settings.data);
-		
-//can't get it to close modal on submit
-			
+
+		//can't get it to close modal on submit
+
 
 	});
 
 };
 
 $("#createUserSubmit").on("click", function() {
-	
+
 	createNewUser();
 
-	
+
 
 }); 
+
+//
+$("#createUserLink").on("click", function() {
+	createNewUser();
+	
+}); 
+
+//
+//$("#createUserButton").on("click", function() {
+//		createNewUser();
+//
+//
+//}); 
+//
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
