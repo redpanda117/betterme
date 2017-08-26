@@ -26,12 +26,11 @@ $(document).ready(function () {
         firebase.auth().onAuthStateChanged(function (user) {
 
             if (user) {
-//<<<<<<< HEAD
                 // User is signed in.
                 //works but need to findout how to redirect when user already login
                 //window.location = 'home.html';
                 console.log(user.email);
-//=======
+                //=======
                 var displayName = user.displayName;
                 var email = user.email;
                 var emailVerified = user.emailVerified;
@@ -50,7 +49,7 @@ $(document).ready(function () {
                 console.log(photoURL);
                 loadGoals(email);
 
-//>>>>>>> 448e858a86d655d9e45cd8e612b6458dfdaae178
+
             } else {
                 // User is signed out. 
                 firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -152,16 +151,19 @@ function loadGoals(userEmail) {
             email: userEmail
         }
     }).done(function (response) {
-<<<<<<< HEAD
-        if(response === "null"){
-            
-        }else{
-            
+        if (response === "null") {
+            db.User.create({
+                email: req.body.email,
+                DOB: req.body.DOB,
+                fullName: req.body.fullName
+            }).then(function () {
+                res.redirect("/");
+            });
+        } else {
+            window.location = '/user/findall';
         }
-           
-=======
         $('#userName').text(sessionStorage.getItem("displayName") + "   ");
->>>>>>> 9e9edd5b0043c3b99e05b7b91345a5ad295496d4
+
         console.log(response);
         populateGoalTable(response);
     });
@@ -182,7 +184,7 @@ function populateGoalTable(res) {
         $deleteButton.addClass("fa fa-trash-o");
         $deleteButton.attr('aria-hidden', 'true');
         $deleteButton.attr('id', goals[i].goalID);
-        $deleteButton.on('click', function  () {
+        $deleteButton.on('click', function () {
             console.log(goals[i].goalID);
         });
 
@@ -213,4 +215,3 @@ function populateGoalTable(res) {
         $('#goaltable').append($newRow);
     }
 }
-
