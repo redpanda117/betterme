@@ -81,7 +81,8 @@ $(document).ready(function () {
 
     })
 
-    /* signout event need to find out where this will be place.                    
+   //  signout event need to find out where this will be place.
+   /* $("#goalsButton").on("click", function (event) {
         firebase.auth().signOut().then(function () {
             // Sign-out successful.
             console.log("signout");
@@ -89,8 +90,8 @@ $(document).ready(function () {
             // An error happened.
              console.error('Sign Out Error', error);
         });
-         */
-
+    }
+*/
 
     //getting quotes from the qoute.rest api
     var inspirationalCategory = [
@@ -232,33 +233,35 @@ function populateGoalTable(res) {
             $("#goalTable").append($newRow);
             console.log("add new row")
         }
-
-<<<<<<< HEAD
-    for (var i = 0; i < goals.length; i++) {
-
-        var goal = goals[i];
-        var $deleteButton = $('<i>');
-        $deleteButton.addClass("fa fa-trash-o");
-        $deleteButton.attr('aria-hidden', 'true');
-        $deleteButton.attr('id', goals[i].goalID);
-        $deleteButton.on('click', function () {
-            console.log(goals[i].goalID);
-        });
-=======
->>>>>>> c2e61cb8225d4d430d0359e958230001a55459fa
-
     }
 }
-<<<<<<< HEAD
-=======
 
+function addGoal(){
+    var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://abetterme.herokuapp.com/goal/create",
+  "method": "POST",
+  "headers": {
+    "content-type": "application/x-www-form-urlencoded"
+  },
+  "data": {
+    //"userID": "1",
+    "title": $("#titleInput").val().trim(),
+    "startDate": $("#startDateInput").val(),
+    "endDate": $("#endDateInput").val(),
+    "difficulty": $("difficultySelect").val(),  
+    "description": $("#descriptionInput").val().trim(),
+  }
+}
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+    return(settings.data);
+});
+}
 
 function createNewUser() {
-	
-	
-	
-
-
 	var settings = {
 		"async": true,
 		"crossDomain": true,
@@ -293,4 +296,3 @@ $("#createUserSubmit").on("click", function() {
 
 
 
->>>>>>> c2e61cb8225d4d430d0359e958230001a55459fa
