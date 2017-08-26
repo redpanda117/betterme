@@ -230,3 +230,44 @@ function populateGoalTable(res) {
     }
 }
 
+
+function createNewUser() {
+	
+	
+	
+
+
+	var settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": "/user/create",
+		"method": "POST",
+		"headers": {
+			"content-type": "application/x-www-form-urlencoded"
+		},
+		"data": {
+			"email": $("#emailInput").val().trim(),
+			"DOB": $("#birthdayInput").val().trim(),
+			"fullName": $("#nameInput").val().trim(),
+		}
+	};
+	$.ajax(settings).done(function(response) {
+		return(settings.data);
+		
+//can't get it to close modal on submit
+			
+
+	});
+
+};
+
+$("#createUserSubmit").on("click", function() {
+	
+	createNewUser();
+
+	
+
+}); 
+
+
+
