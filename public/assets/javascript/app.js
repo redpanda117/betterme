@@ -146,7 +146,6 @@ $(document).ready(function () {
         });
     }
 });
-
 function loadGoals() {
     var queryURL = "/user/find"
     console.log("loadGoals userEmail: " + sessionStorage.getItem('email'));
@@ -157,19 +156,7 @@ function loadGoals() {
             email: sessionStorage.getItem('email')
         }
     }).done(function (response) {
-        if (response === "null") {
-            db.User.create({
-                email: req.body.email,
-                DOB: req.body.DOB,
-                fullName: req.body.fullName
-            }).then(function () {
-                res.redirect("/");
-            });
-        } else {
-            window.location = '/user/findall';
-        }
         $('#userName').text(sessionStorage.getItem("displayName") + "   ");
-
         console.log(response);
         populateGoalTable(response);
     });
