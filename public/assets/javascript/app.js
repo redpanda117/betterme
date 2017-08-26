@@ -246,7 +246,6 @@ function addGoal(){
     "content-type": "application/x-www-form-urlencoded"
   },
   "data": {
-    //"userID": "1",
     "title": $("#titleInput").val().trim(),
     "startDate": $("#startDateInput").val(),
     "endDate": $("#endDateInput").val(),
@@ -260,6 +259,10 @@ $.ajax(settings).done(function (response) {
     return(settings.data);
 });
 }
+
+$("#submitNewGoal").on("click", function() {
+	addGoal();
+});
 
 function createNewUser() {
 	var settings = {
