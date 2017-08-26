@@ -5,6 +5,12 @@
 
 $(document).ready(function () {
 
+    //When the document has finished loading load the goals using the email address
+    //Currently stored in the session.
+    //If there is not one the table will be blank.
+    loadGoals();
+
+
     var fullName = "";
 
     // Initialize Firebase
@@ -47,7 +53,7 @@ $(document).ready(function () {
                 sessionStorage.setItem('providerData', providerData);
 
                 console.log(photoURL);
-                loadGoals(email);
+
 
 
             } else {
@@ -141,14 +147,14 @@ $(document).ready(function () {
     }
 });
 
-function loadGoals(userEmail) {
+function loadGoals() {
     var queryURL = "/user/find"
-    console.log("loadGoals userEmail: " + userEmail)
+    console.log("loadGoals userEmail: " + sessionStorage.getItem('email'));
     $.ajax({
         url: queryURL,
         method: "POST",
         data: {
-            email: userEmail
+            email: sessionStorage.getItem('email')
         }
     }).done(function (response) {
         if (response === "null") {
@@ -169,14 +175,78 @@ function loadGoals(userEmail) {
     });
 }
 
+function deleteGoal(goalID) {
+    var queryURL = "/goal/del"
+    console.log("Del GoalID: " + goalID);
+    $.ajax({
+        url: queryURL,
+        method: "POST",
+        data: {
+            goalID: goalID
+        }
+    }).done(function (response) {
+
+        loadGoals();
+    });
+}
+
+
 function populateGoalTable(res) {
 
-    $('#goalTable').empty();
-    console.log(res[0]);
+    $("#goalTable").empty();
+    //console.log(res[0]);
     var goals = res[0].Goals;
 
     console.log(goals);
+//If there are goals show them.  If not show the message to get started.
+    if (goals.length < 1) {
+        var $newRow = $('<tr>');
+        var $newMessage = $('<td>');
+        $newMessage.attr('colspan', "7");
+        $newMessage.text("Enter a goal or login to get started!!");
+        $newRow.append($newMessage);
+        $("#goalTable").append($newRow);
+    } else {
+        for (var i = 0; i < goals.length; i++) {
 
+            var goal = goals[i];
+            var $deleteButton = $('<i>');
+            $deleteButton.addClass("fa fa-trash-o");
+            $deleteButton.attr('aria-hidden', 'true');
+            $deleteButton.attr('id', goals[i].goalID);
+            $deleteButton.on('click', function () {
+                console.log('Delete ID ' + $(this).attr('id'));
+                deleteGoal($(this).attr('id'));
+            });
+
+            var $newRow = $('<tr>');
+            var $newGoalTitle = $('<td>');
+            var $newStartDate = $('<td>');
+            var $newEndDate = $('<td>');
+            var $newDifficulty = $('<td>');
+            var $newStatus = $('<td>');
+            var $delBtnCell = $('<td>');
+
+            $newGoalTitle.text(goal.title);
+            $newStartDate.text(goal.startDate);
+            $newEndDate.text(goal.endDate);
+            $newDifficulty.text(goal.difficulty);
+            $newStatus.text(goal.status);
+
+            $delBtnCell.append($deleteButton);
+            $newRow.append('<td></td>');
+            $newRow.append($delBtnCell);
+            $newRow.append($newGoalTitle);
+            $newRow.append($newStartDate);
+            $newRow.append($newEndDate);
+            $newRow.append($newDifficulty);
+            $newRow.append($newStatus);
+
+            $("#goalTable").append($newRow);
+            console.log("add new row")
+        }
+
+<<<<<<< HEAD
     for (var i = 0; i < goals.length; i++) {
 
         var goal = goals[i];
@@ -187,31 +257,53 @@ function populateGoalTable(res) {
         $deleteButton.on('click', function () {
             console.log(goals[i].goalID);
         });
+=======
+>>>>>>> c2e61cb8225d4d430d0359e958230001a55459fa
 
-        var $newRow = $('<tr>');
-        var $newGoalTitle = $('<td>');
-        var $newStartDate = $('<td>');
-        var $newEndDate = $('<td>');
-        var $newDifficulty = $('<td>');
-        var $newStatus = $('<td>');
-        var $delBtnCell = $('<td>');
-
-
-        $newGoalTitle.text(goal.title);
-        $newStartDate.text(goal.startDate);
-        $newEndDate.text(goal.endDate);
-        $newDifficulty.text(goal.difficulty);
-        $newStatus.text(goal.status);
-
-        $delBtnCell.append($deleteButton);
-        $newRow.append('<td></td>');
-        $newRow.append($delBtnCell);
-        $newRow.append($newGoalTitle);
-        $newRow.append($newStartDate);
-        $newRow.append($newEndDate);
-        $newRow.append($newDifficulty);
-        $newRow.append($newStatus);
-
-        $('#goaltable').append($newRow);
     }
 }
+<<<<<<< HEAD
+=======
+
+
+function createNewUser() {
+	
+	
+	
+
+
+	var settings = {
+		"async": true,
+		"crossDomain": true,
+		"url": "/user/create",
+		"method": "POST",
+		"headers": {
+			"content-type": "application/x-www-form-urlencoded"
+		},
+		"data": {
+			"email": $("#emailInput").val().trim(),
+			"DOB": $("#birthdayInput").val().trim(),
+			"fullName": $("#nameInput").val().trim(),
+		}
+	};
+	$.ajax(settings).done(function(response) {
+		return(settings.data);
+		
+//can't get it to close modal on submit
+			
+
+	});
+
+};
+
+$("#createUserSubmit").on("click", function() {
+	
+	createNewUser();
+
+	
+
+}); 
+
+
+
+>>>>>>> c2e61cb8225d4d430d0359e958230001a55459fa

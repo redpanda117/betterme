@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "bn19",
+=======
+    "password": "MySPa55word1!",
+>>>>>>> c2e61cb8225d4d430d0359e958230001a55459fa
     "database": "abetterme",
     "host": "127.0.0.1",
     "dialect": "mysql"

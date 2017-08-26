@@ -36,8 +36,9 @@ h2 {
 
 h3 {
 	color: #06a4e3;
-	font-weight: bold;
 	font-family: snap ITC;
+	font-size: 200%;
+	font-weight: bold;
 	text-align: center;
 }
 
@@ -48,12 +49,13 @@ h4{
 
 h5{
 	color: #2a3273;
+	font-size: 100%;
 }
 
 #buttonsDiv{
 	text-align: center;
-	margin-top: 10px;
 }
+
 
 .btn-circle {
 	border-radius: 50%;
@@ -94,6 +96,7 @@ h5{
 #quotePanel {
 	background-color: white;
 	margin: 2% 2%;
+	max-width: 700px;
 	text-align: center border-radius: 10px 10px 10px 10px;
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
@@ -108,13 +111,21 @@ p {
 	font-size: 100%;
 }
 
+
+
 #todaysGoalsPanel {
 	background-color: white;	
 	padding: 5px;
+	max-width: 700px;
 	text-align: center border-radius: 10px 10px 10px 10px;
 	-moz-border-radius: 10px 10px 10px 10px;
 	-webkit-border-radius: 10px 10px 10px 10px;
 	border: 5px solid #2a3273;
+}
+
+.panel-heading {
+	padding: 5px 15px;
+
 }
 
 #task {
@@ -149,21 +160,10 @@ p {
 
 /*in instructions module2*/
 #starImage {
-	max-height: 200px;
+	max-height: 150px;
 	margin: auto;
 }
 
-/*in instructions module2*/
-#starImage {
-	max-height: 200px;
-	margin: auto;
-}
-
-/*in instructions module2*/
-#starImage {
-	max-height: 200px;
-	margin: auto;
-}
 
 #scoreboardPanel {
 	background-color: #2a3273;
