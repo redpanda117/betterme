@@ -11,6 +11,10 @@ body {
 }
 
 
+#bigNavBar {
+	background-color: #2a3273;
+}
+
 /*title styles*/
 
 h1 {
@@ -229,8 +233,19 @@ button:hover {
 	color: black ;
 	background-color: #def ;
 }
-
-ul.a {
-	list-style-type: circle;
+button:hover {
+	color: black ;
+	background-color: #def ;
 }
 
+
+/*for profile pic
+#navbarProfilePic{
+	margin-right: 5px;
+	float: left;
+	background: url(example.jpg) 50% 50% no-repeat; /* 50% 50% centers image in div */
+/*	background-size: auto 100%; /* Interchange this value depending on prefering width vs. height */
+/*	width: 20px;
+/*	height: 20px;
+}
+*/

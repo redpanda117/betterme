@@ -27,7 +27,7 @@ $(document).ready(function () {
     //google authentication
     var provider = new firebase.auth.GoogleAuthProvider();
 
-    //google sign in if before going to goals page 
+    //google sign in if before going to goals page
     $("#goalsButton").on("click", function (event) {
         firebase.auth().onAuthStateChanged(function (user) {
 
@@ -55,9 +55,8 @@ $(document).ready(function () {
                 console.log(photoURL);
 
 
-
             } else {
-                // User is signed out. 
+                // User is signed out.
                 firebase.auth().signInWithPopup(provider).then(function (result) {
                     // This gives you a Google Access Token. You can use it to access the Google API.
                     var token = result.credential.accessToken;
@@ -81,17 +80,17 @@ $(document).ready(function () {
 
     })
 
-   //  signout event need to find out where this will be place.
-   /* $("#goalsButton").on("click", function (event) {
-        firebase.auth().signOut().then(function () {
-            // Sign-out successful.
-            console.log("signout");
-        }).catch(function (error) {
-            // An error happened.
-             console.error('Sign Out Error', error);
-        });
-    }
-*/
+    //  signout event need to find out where this will be place.
+    /* $("#goalsButton").on("click", function (event) {
+         firebase.auth().signOut().then(function () {
+             // Sign-out successful.
+             console.log("signout");
+         }).catch(function (error) {
+             // An error happened.
+              console.error('Sign Out Error', error);
+         });
+     }
+ */
 
     //getting quotes from the qoute.rest api
     var inspirationalCategory = [
@@ -136,10 +135,10 @@ $(document).ready(function () {
             var author = $("<p>").text("By: " + authorData);
             author.attr("id", "randomAuthor");
             //console.log(authorData);
-            //appending it to the div 
+            //appending it to the div
             quoteDiv.append(quote);
             quoteDiv.append(author);
-            //displaying it in the html   
+            //displaying it in the html
             $("#quote").prepend(quoteDiv);
 
             //placeholder display
@@ -147,6 +146,7 @@ $(document).ready(function () {
         });
     }
 });
+
 function loadGoals() {
     var queryURL = "/user/find"
     console.log("loadGoals userEmail: " + sessionStorage.getItem('email'));
@@ -236,6 +236,7 @@ function populateGoalTable(res) {
     }
 }
 
+
 function addGoal(){
     var difficalt =$("#difficultySelect").val();
     var difficulty = parseInt(difficalt);
@@ -262,11 +263,37 @@ $.ajax(settings).done(function (response) {
 });
 };
 
-$("#submitNewGoal").on("click", function() {
-	addGoal();
+function addGoal() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "/goal/create",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+        },
+        "data": {
+            "title": $("#titleInput").val().trim(),
+            "startDate": $("#startDateInput").val(),
+            "endDate": $("#endDateInput").val(),
+            "difficulty": $("#difficultySelect").val(),
+            "description": $("#descriptionInput").val().trim(),
+        }
+    };
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        return (settings.data);
+    });
+}
+
+
+$("#submitNewGoal").on("click", function () {
+    addGoal();
 });
 
 function createNewUser() {
+<<<<<<< HEAD
 	var settings = {
 		"async": true,
 		"crossDomain": true,
@@ -285,16 +312,44 @@ function createNewUser() {
 		return(settings.data);
 		
 	});
+=======
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "/user/create",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+        },
+        "data": {
+            "email": $("#emailInput").val().trim(),
+            "DOB": $("#birthdayInput").val().trim(),
+            "fullName": $("#nameInput").val().trim(),
+        }
+    };
+    $.ajax(settings).done(function (response) {
+        return (settings.data);
+
+//can't get it to close modal on submit
+
+
+    });
+>>>>>>> f81a6611db08d34059150cd54df93db24497ca46
 
 };
 
-$("#createUserSubmit").on("click", function() {
-	
-	createNewUser();
+$("#createUserSubmit").on("click", function () {
 
-	
+    createNewUser();
 
-}); 
+});
 
+/**
+ * This function increments or decrements the current user score based on the value passed.
+ * @param val
+ */
+function updateUserScore(val){
+
+}
 
 

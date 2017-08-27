@@ -4,10 +4,10 @@ var express = require('express');
 var db = require("../models");
 var router = express.Router();
 
-"use strict";
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/findall", function (req, res) {
+    "use strict";
     db.User.findAll({
         include: [{
             model: db.Goal,
@@ -54,6 +54,8 @@ router.post("/update", function (req, res) {
         email: req.body.email,
         DOB: req.body.DOB,
         fullName: req.body.fullName,
+        goalsCompleted: parseInt(req.body.goalsCompleted),
+        userScore: parseInt(req.body.userScore),
         where: {
             email: req.body.email
         }
@@ -61,7 +63,6 @@ router.post("/update", function (req, res) {
         res.redirect("/");
     });
 });
-
 
 router.post("/del", function (req, res) {
     db.User.destroy({

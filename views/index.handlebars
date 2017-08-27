@@ -1,8 +1,54 @@
-<!--TITLE===================================================================================-->
-<!--title at top of page-->
-<div class='container'>
-    <h1>A Better Me!</h1>
-</div>
+
+
+
+
+	
+	
+	
+	<!--New navbar-->
+	<!--=======================================================================================-->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid" id="bigNavBar">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<!--BRAND LOGO-->
+				<h1 id="navbarTitle">A Better Me!</h1>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				
+				
+				<ul class="nav navbar-nav navbar-right">
+					
+					<li><a href="#" id="questionMark"  data-toggle="modal" data-target="#instructionsModal">?</a></li>
+					<li class="dropdown">
+						
+						<!--User Navbar Picture and Menu-->
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<img src="http://placehold.it/18x18" id="navbarProfilePic" class="profile-image img-circle"> 
+							<!--username or no?  Ask Bernard and Tina
+							Username -->
+						</a>
+						
+						<!--drop down menu for user Pic in navbar-->
+						<ul class="dropdown-menu">
+							<!--<li><a href="#">Edit Goal</a></li>-->
+							<li><a href="#" id="addGoalLink">Add Goal</a></li>
+							<li><a href="#" id="createUserLink" data-toggle="modal" data-target="#createUserModal">Create User</a></li>
+							
+							
+							<li><a href="#" id=logOutLink"">Log Out</a></li>
+						</ul>
+					</li>
+					
+					
+					
+					
+				</ul>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
 
 
 <!--MAIN PAGE=================================================================================-->
@@ -11,58 +57,66 @@
 <div class="container" id="main page">
 
 
-    <!--MAIN PAGE BUTTONS===================================================================================-->
-    <!--first row for buttons-->
-    <div class="row" id="buttonsDiv">
-        <!--spacer for centering-->
-        <div class="col-5"></div>
-
-        <!--button container for first two buttons-->
-        <div class="col-2" class="col align-self-center">
-            <!--buttons-->
-            <a href="#" data-toggle="modal" data-target="#instructionsModal">
-                <button type="button" class="btn btn-primary btn-circle" id="instructionsButton">Instructions</button>
-            </a>
-            <a href="#">
-                <button type="button" class="btn btn-primary btn-circle" id="goalsButton">Today's Goals</button>
-            </a>
-        </div>
-
-        <!--spacer for centering-->
-        <div class="col-5"></div>
-        <!--end of first row for buttons-->
-    </div>
 
 
+	<!--MAIN PAGE BUTTONS===================================================================================-->
+	<!--first row for buttons-->
+	<div class="row" id="buttonsDiv">
+		<!--spacer for centering-->
+		<div class="col-5"></div>
 
-    <!--QUOTE===================================================================================-->
-    <!--row holding quote-->
-    <div class="row">
-        <!--spacer for centering-->
-        <div class="col-4"></div>
-
-        <!--quote-->
-        <div class="col-4">
-            <div class="panel panel-default" id="quotePanel">
-                <div class="panel-body" id="quote">
-                    <h2>“Success is going from failure to failure without losing your enthusiasm.”</h2>
-                    <p class="pull-right">-Winston Churchill</p>
-                    <!--	refresh quote button for later?					
-						<button type="button" class="btn btn-default" id="instructionsButton">Instructions</button>-->
-                </div>
-
-                <!--end of container holding quote-->
-            </div>
-            <!--end of quote-->
-        </div>
-
-        <!--spacer for centering-->
-        <div class="col-4"></div>
-        <!--end of row holding quote-->
-    </div>
+		<!--BUTTON CONTAINER FOR ORIGINAL -->
+	<!--	<div class="col-2" class="col align-self-center">
+			<!--buttons-->
+<!--
+			<a href="#" data-toggle="modal" data-target="#instructionsModal">
+				<button type="button" class="btn btn-primary btn-circle" id="instructionsButton">Instructions</button>
+			</a>
+			<a href="#">
+				<button type="button" class="btn btn-primary btn-circle" id="goalsButton">Today's Goals</button>
+			</a>
+		</div>
+-->
 
 
-    <!--end of container holding main page-->
+		<!--spacer for centering-->
+		<div class="col-5"></div>
+		<!--end of first row for buttons-->
+	</div>
+
+
+
+	<!--QUOTE===================================================================================-->
+	
+	
+	
+	
+	
+	<!--row holding quote-->
+	<div class="row">
+		<!--spacer for centering-->
+		<div class="col-4"></div>
+
+		<!--quote-->
+		<div class="col-4">
+			<div class="panel panel-default" id="quotePanel">
+				<div class="panel-body" id="quote">
+					<!--quote goes here-->
+					
+				</div>
+
+				<!--end of container holding quote-->
+			</div>
+			<!--end of quote-->
+		</div>
+
+		<!--spacer for centering-->
+		<div class="col-4"></div>
+		<!--end of row holding quote-->
+	</div>
+
+
+	<!--end of container holding main page-->
 </div>
 
 <!--END OF MAIN PAGE==============================================================================-->
@@ -73,67 +127,72 @@
 <!--TODAY'S GOALS PAGE============================================================================-->
 <!--=======================================================================================-->
 
+        <div class="panel-heading">
+            <h3>Today's Goal</h3> 
+           
+        </div>
+        <div class="panel-body" id="task">
+=======
 <!--container holding today's schedule, shows when Today's Goals is clicked-->
 <div class="container" id="todaysGoalsPage">
 
 
+	
 
 
-    <!--TODAY'S GOALS PANEL----------------------------------------------------------------------->
+<!--TODAY'S GOALS PANEL----------------------------------------------------------------------->
 
-    <div class="panel panel-default" id="todaysGoalsPanel">
-        <!--SCORE SECTION----------------------------------------------------------------------->
-        <div class="panel panel-default" id="scoreboardPanel">
-
-            <div id="scoreboardHeading">
-                <h6><span id="userName"></span>SCOREBOARD</h6>
-            </div>
-            <!--badge-->
-            <!--first row for buttons-->
-            <div class="row" id="buttonsDiv">
-                <!--spacer for centering-->
-                <div class="col-4"></div>
-                <div class="col-4">
-                    <button class="btn btn-primary" type="button" id="goldStarBadge"><img src="assets/images/goldStar.png" class="img-responsive" alt="Responsive image" id="smallStarImage"><span class="badge" id="starScore">2000</span>
+	<div class="panel panel-default" id="todaysGoalsPanel">
+<!--SCORE SECTION----------------------------------------------------------------------->
+		<div class="panel panel-default" id="scoreboardPanel">
+			
+			<div id="scoreboardHeading">
+				<h6><span id="userName"></span>SCOREBOARD</h6>
+			</div>
+			<!--badge-->
+			<!--first row for buttons-->
+			<div class="row" id="buttonsDiv">
+				<!--spacer for centering-->
+				<div class="col-4"></div>
+				<div class="col-4">
+			<button class="btn btn-primary" type="button" id="goldStarBadge"><img src="assets/images/goldStar.png" class="img-responsive" alt="Responsive image" id="smallStarImage"><span class="badge" id="starScore">2000</span>
 			</button>
-                    <button class="btn btn-primary " type="button" id="neutronStarBadge"><img src="assets/images/neutronStar.png" class="img-responsive" alt="Responsive image" id="neutronStarImage"><span class="badge" id="starScore">30</span>
+			<button class="btn btn-primary " type="button" id="neutronStarBadge"><img src="assets/images/neutronStar.png" class="img-responsive" alt="Responsive image" id="neutronStarImage"><span class="badge" id="starScore">30</span>
 			</button>
-                    <button class="btn btn-primary" type="button" id="supernovaBadge"><img src="assets/images/supernova3.jpg" class="img-responsive" alt="Responsive image" id="supernovaImage"><span class="badge" id="starScore">1</span>
+			<button class="btn btn-primary" type="button" id="supernovaBadge"><img src="assets/images/supernova3.jpg" class="img-responsive" alt="Responsive image" id="supernovaImage"><span class="badge" id="starScore">1</span>
 			</button>
-                </div>
-            </div>
-            <!--spacer for centering-->
-            <div class="col-4"></div>
-            <!--end of Today's Goals Panel-->
-        </div>
+					</div>		
+			</div>
+			<!--spacer for centering-->
+			<div class="col-4"></div>
+			<!--end of Today's Goals Panel-->
+		</div>
 
-
-
-
-
-
-        <!--TODAYS GOALS HEADING AND TASKS===========================================================================-->
-
-
-        <div class="panel-heading">
-            <h3>Today's Goal<button type="button" class="btn btn-success btn-md pull-right" data-toggle="modal" data-target="#createGoal" id="addGoalButton">+</button></h3> 
-           
-        </div>
-        <div class="panel-body" id="task">
-
-            <h5>Task item from schedule</h5>
-            <div class="table-responsive">
+		
+		
+		
+		
+		
+<!--TODAYS GOALS HEADING AND TASKS===========================================================================-->
+		
+		
+		<div class="panel-heading">
+			<h3>Today's Goals</h3>
+		</div>
+		<div class="panel-body" id="task">
+			
+			 <div class="table-responsive">
                 <table class="table table-hover">
                     <thead>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th>Goal</th>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Difficulty</th>
-                            <th>Status</th>
-                        </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th>Goal</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Difficulty</th>
+                        <th>Status</th>
+                    </tr>
                     </thead>
                     <tbody id="goalTable">
 
@@ -141,61 +200,63 @@
                 </table>
 
             </div>
-            <a href="#" data-toggle="modal" data-target="#goalsModal">
-                <button type="button" class="btn btn-primary" id="editGoalsButton"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
-            </a>
-
-            <!--completed button inside of each task-->
+			<a href="#" data-toggle="modal" data-target="#goalsModal">
+				<button type="button" class="btn btn-primary" id="editGoalsButton"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></button>
+			</a>
+			
+			<!--completed button inside of each task-->
             <div id="goalList">
 
             </div>
-
-            <a href="#" data-toggle="modal" data-target="#awardModal3" class="completedButtons">
-                <button type="button" class="btn btn-primary pull-right" id="completedButton">Completed</button>
-            </a>
-            <a href="#" data-toggle="modal" data-target="#awardModal2" class="completedButtons">
-                <button type="button" class="btn btn-primary pull-right" id="completedButton">Completed</button>
-            </a>
-            <a href="#" data-toggle="modal" data-target="#awardModal1" class="completedButtons">
-                <button type="button" class="btn btn-primary pull-right" id="completedButton">Completed</button>
-            </a>
-        </div>
-
-
-        <!--end of Today's Goals Panel-->
-    </div>
+			
+<!--EXTRA COMPLETED BUTTONS FOR TESTING
+			<a href="#" data-toggle="modal" data-target="#awardModal3" class="completedButtons">
+				<button type="button" class="btn btn-primary pull-right" id="completedButton">Completed</button>
+			</a>
+			<a href="#" data-toggle="modal" data-target="#awardModal2" class="completedButtons">
+				<button type="button" class="btn btn-primary pull-right" id="completedButton">Completed</button>
+			</a>
+-->
+			<a href="#" data-toggle="modal" data-target="#awardModal1" class="completedButtons">
+				<button type="button" class="btn btn-primary pull-right" id="completedButton">Completed</button>
+			</a>
+		</div>
 
 
-
-    <!--BUTTONS IN GOALS SECTION===========================================================================-->
-    <!--container for home and edit buttons in today's goals section-->
-    <div class="container" id="goalsButtonsDiv">
-
-        <!--spacer for centering-->
-        <div class="col-5"></div>
-
-        <!--create user and home buttons-->
-        <div class="col-2">
-            <a href="../layouts/test.html">
-                <button type="button" class="btn btn-primary" id="homeButton" class="glyphicon glyphicon-home"><span class="glyphicon glyphicon glyphicon-home" aria-hidden="true"></span></button>
-            </a>
-
-            <a href="#" data-toggle="modal" data-target="#createUserModal">
-                <button type="button" class="btn btn-primary " id="createUserButton">CREATE USER</button>
-            </a>
-
-            <a href="#" data-toggle="modal" data-target="#logOutModal">
-                <button type="button" class="btn btn-primary " id="createUserButton">Log Out</button>
-            </a>
-        </div>
+		<!--end of Today's Goals Panel-->
+	</div>
 
 
-        <!--spacer for centering-->
-        <div class="col-5"></div>
-        <!--end of container for home and edit buttons in today's goals section-->
-    </div>
 
-    <!--end of container holding today's schedule page-->
+<!--BUTTONS IN GOALS SECTION===========================================================================-->
+	
+
+			
+<!--
+			
+	<!-CREATE USER BUTTON-->
+<!--
+			<a href="#" data-toggle="modal" data-target="#createUserModal">
+				<button type="button" class="btn btn-primary " id="createUserButton">CREATE USER</button>
+			</a>
+-->
+
+
+<!--DELETE USER BUTTON
+			<a href="#" data-toggle="modal" data-target="#deleteUserModal">
+				<button type="button" class="btn btn-primary " id="deleteUserButton">DELETE USER</button>
+			</a>
+-->
+<!--lOG OUT BUTTON		
+			<a href="#" data-toggle="modal" data-target="#logOutModal">
+				<button type="button" class="btn btn-primary " id="createUserButton">Log Out</button>
+			</a>
+		
+
+
+	
+
+	<!--end of container holding today's goals page-->
 </div>
 
 
@@ -211,131 +272,131 @@
 <!--INSTRUCTIONS MODALS===========================================================================-->
 <!--INSTRUCTIONS MODAL 1   ======================================================================-->
 <div class="modal fade" id="instructionsModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Instructions</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Instructions</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-            </div>
-            <div class="modal-body">
-                <h5>Imagine an ideal version of yourself. What type of tasks would that ideal version of you do daily, weekly or monthly?</h5>
-                <ul class="a">
-                    <h5>Does the ideal version of you play an instrument?</h5>
-                    <h5>Speak a different language?</h5>
-                    <h5>Exercise regularly?</h5>
-                    <h5>Call a loved one more often?</h5>
-                </ul>
-                <h5>If you are like most people, you struggle to breach the gap between the things you do now and the things you would do if you could reach your full potential. This application is designed to help you become the person you want to be. Just enter the tasks you'd like to accomplish, and when you complete tasks you'll receive rewards. The more rewards you receive in the app, the more you receive in real life as you gradually improve in each task you focus on every day.</h5>
-            </div>
-            <div class="modal-footer">
-                <a href="#" data-toggle="modal" data-target="#instructionsModal2">
-                    <button type="button" class="btn btn-primary" id="instructionsNext1" data-dismiss="modal">Next</button>
-                </a>
+			</div>
+			<div class="modal-body">
+				<h5>Imagine an ideal version of yourself.  What type of tasks would that ideal version of you do daily, weekly or monthly?</h5>
+					<ul class="a">
+						<h5>Does the ideal version of you play an instrument?</h5>
+						<h5>Speak a different language?</h5>
+						<h5>Exercise regularly?</h5>
+						<h5>Call a loved one more often?</h5>		
+					</ul>
+				<h5>If you are like most people, you struggle to breach the gap between the things you do now and the things you would do if you could reach your full potential.  This application is designed to help you become the person you want to be.  Just enter the tasks you'd like to accomplish, and when you complete tasks you'll receive rewards. The more rewards you receive in the app, the more you receive in real life as you gradually improve in each task you focus on every day.</h5>
+			</div>
+			<div class="modal-footer">
+				<a href="#" data-toggle="modal" data-target="#instructionsModal2">
+					<button type="button" class="btn btn-primary" id="instructionsNext1" data-dismiss="modal">Next</button>
+				</a>
 
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!--INSTRUCTIONS MODAL 2  ======================================================================-->
 <div class="modal fade" id="instructionsModal2">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Instructions</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Instructions</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-            </div>
-            <div class="modal-body">
-                <h5>Set up your schedule with daily, weekly and monthly tasks for whatever types of things you would like to change about yourself. Remember, for most goals progress can be made in as little as 15 minutes a day, multiple days per week. If you struggle with a task, break it up into small segments and tackle it one step at a time.</h5>
-                <h5>For every day that you are able to hit complete for all that day's goals, you will win a gold star!</h5>
-                <img src="assets/images/star.jpg" class="img-responsive" alt="Responsive image" id="starImage">
-            </div>
-            <div class="modal-footer">
-                <a href="#" data-toggle="modal" data-target="#instructionsModal3">
-                    <button type="button" class="btn btn-primary" id="instructionsNext1" data-dismiss="modal">Next</button>
-                </a>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+			</div>
+			<div class="modal-body">
+				<h5>Set up your schedule with daily, weekly and monthly tasks for whatever types of things you would like to change about yourself. Remember, for most goals progress can be made in as little as 15 minutes a day, multiple days per week. If you struggle with a task, break it up into small segments and tackle it one step at a time.</h5>
+				<h5>For every day that you are able to hit complete for all that day's goals, you will win a gold star!</h5>
+				<img src="assets/images/star.jpg" class="img-responsive" alt="Responsive image" id="starImage">
+			</div>
+			<div class="modal-footer">
+				<a href="#" data-toggle="modal" data-target="#instructionsModal3">
+					<button type="button" class="btn btn-primary" id="instructionsNext1" data-dismiss="modal">Next</button>
+				</a>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!--INSTRUCTIONS MODAL 3   ======================================================================-->
 <div class="modal fade" id="instructionsModal3">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Instructions</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Instructions</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-            </div>
-            <div class="modal-body">
-
-                <h5>If you've got the fortitude and manage to complete all of the day's goals for 7 consecutive days, you will win a gold star and a chance to have a small celebration in whatever healthy way you like!</h5>
-                <img src="assets/images/neutronStar.png" class="img-responsive" alt="Responsive image" id="starImage">
-            </div>
-            <div class="modal-footer">
-                <a href="#" data-toggle="modal" data-target="#instructionsModal4">
-                    <button type="button" class="btn btn-primary" id="instructionsNext1" data-dismiss="modal">Next</button>
-                </a>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+			</div>
+			<div class="modal-body">
+				
+				<h5>If you've got the fortitude and manage to complete all of the day's goals for 7 consecutive days, you will win a gold star and a chance to have a small celebration in whatever healthy way you like!</h5>
+				<img src="assets/images/neutronStar.png" class="img-responsive" alt="Responsive image" id="starImage">
+			</div>
+			<div class="modal-footer">
+				<a href="#" data-toggle="modal" data-target="#instructionsModal4">
+					<button type="button" class="btn btn-primary" id="instructionsNext1" data-dismiss="modal">Next</button>
+				</a>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!--INSTRUCTIONS MODAL 4   ======================================================================-->
 <div class="modal fade" id="instructionsModal4">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Instructions</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Instructions</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-            </div>
-            <div class="modal-body">
-                <h5>Stay strong and hold on to your goals tenaciously and if you can manage to complete all your daily goals for 21 days, you'll go supernova and get a chance to really celebrate! You will have taken a serious step to becomming the person you want to be!</h5>
-
-                <img src="assets/images/supernova3.jpg" class="img-responsive" alt="Responsive image" id="starImage">
-            </div>
-            <div class="modal-footer">
-                <a href="#" data-toggle="modal" data-target="#instructionsModal5">
-                    <button type="button" class="btn btn-primary" id="instructionsNext1" data-dismiss="modal">Next</button>
-                </a>
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+			</div>
+			<div class="modal-body">
+				<h5>Stay strong and hold on to your goals tenaciously and if you can manage to complete all your daily goals for 21 days, you'll go supernova and get a chance to really celebrate! You will have taken a serious step to becomming the person you want to be!</h5>
+				
+				<img src="assets/images/supernova3.jpg" class="img-responsive" alt="Responsive image" id="starImage">
+			</div>
+			<div class="modal-footer">
+				<a href="#" data-toggle="modal" data-target="#instructionsModal5">
+					<button type="button" class="btn btn-primary" id="instructionsNext1" data-dismiss="modal">Next</button>
+				</a>
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 
 <!--INSTRUCTIONS MODAL 5   ======================================================================-->
 
 <div class="modal fade" id="instructionsModal5">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Instructions</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Instructions</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-            </div>
-            <div class="modal-body">
-                <h5>To keep you motivated, we'll send you inspirational quotes daily. Lots of people are rooting you on and want to see you succeed! </h5>
-                <img src="assets/images/quotePic.jpg" class="img-responsive" alt="Responsive image" id="starImage">
-                <h5>Good luck on your journey!</h5>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+			</div>
+			<div class="modal-body">
+				<h5>To keep you motivated, we'll send you inspirational quotes daily. Lots of people are rooting you on and want to see you succeed! </h5>
+				<img src="assets/images/quotePic.jpg" class="img-responsive" alt="Responsive image" id="starImage">
+				<h5>Good luck on your journey!</h5>
+			</div>
+			<div class="modal-footer">				
+				<button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
 <!--end of instructions modals-->
 
@@ -343,157 +404,215 @@
 <!--AWARD MODALS===========================================================================-->
 <!--AWARD MODAL 1 ===========================================================================-->
 <div class="modal fade" id="awardModal1">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">You did it!</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">You did it!</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-            </div>
-            <div class="modal-body">
-                <h4>Congratulations! For completing this task you win a gold star!</h4>
+			</div>
+			<div class="modal-body">
+				<h4>Congratulations! For completing this task you win a gold star!</h4>
 
-                <img src="assets/images/star.jpg" class="img-responsive" alt="Responsive image" id="starImage">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+				<img src="assets/images/star.jpg" class="img-responsive" alt="Responsive image" id="starImage">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
-<!--end of award modal-->
+<!--END OF AWARD MODAL 1-->
 
 <!--AWARD MODAL 2 ===========================================================================-->
 <div class="modal fade" id="awardModal2">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">You did it!</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">You did it!</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-            </div>
-            <div class="modal-body">
-                <h4>Congratulations! Keep this up and nothing can stop you! For completing all your tasks for the day, you win a Neutron Star!</h4>
-                <img src="assets/images/neutronStar.png" class="img-responsive" alt="Responsive image" id="starImage">
-            </div>
+			</div>
+			<div class="modal-body">
+				<h4>Congratulations! Keep this up and nothing can stop you!  For completing all your tasks for the day, you win a Neutron Star!</h4>
+				<img src="assets/images/neutronStar.png" class="img-responsive" alt="Responsive image" id="starImage">
+			</div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
+<!--END OF AWARD MODAL 2-->
 
 <!--AWARD MODAL 3 ===========================================================================-->
 <div class="modal fade" id="awardModal3">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Wow! You went supernova!</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Wow! You went supernova!</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-            </div>
-            <div class="modal-body">
-                <h4>Amazing! What an accomplishment! 30 days of Neutron Stars in a row! You are one step closer to the best you that you can possibly be! Make sure celebrate!</h4>
-                <img src="assets/images/supernova3.jpg" class="img-responsive" alt="Responsive image" id="starImage">
-            </div>
+			</div>
+			<div class="modal-body">
+				<h4>Amazing!  What an accomplishment! 30 days of Neutron Stars in a row! You are one step closer to the best you that you can possibly be! Make sure celebrate!</h4>
+				<img src="assets/images/supernova3.jpg" class="img-responsive" alt="Responsive image" id="starImage">
+			</div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
-<!--end of award modals-->
+<!--END OF AWARD MODAL 3-->
+<!--END OF AWARD MODALS===========================================================================-->
 
 
-
+<!--GOAL MODALS===========================================================================-->
+<!--======================================================================================================-->
 <!--EDIT GOALS/SCHEDULE MODAL===========================================================================-->
 <div class="modal fade" id="goalsModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Edit Goal</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Edit Goal</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
-            </div>
-            <div class="modal-body">
-                <p>Task and Time from Google Calendar here</p>
-            </div>
+			</div>
+			<div class="modal-body">
+				<p>Task and Time from Google Calendar here</p>
+			</div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save" aria-hidden="true"></span>
 				</button>
-
-            </div>
-        </div>
-    </div>
+				
+			</div>
+		</div>
+	</div>
 </div>
 
+<!--GOAL COMMENT MODAL===========================================================================-->
+<!--END OF GOAL COMMENT MODAL===========================================================================-->
+<!--END OF GOAL MODALS===========================================================================-->
+
+
+
+<!--USER MODALS===========================================================================-->
+<!--======================================================================================================-->
 <!--CREATE USER MODAL===========================================================================-->
-<!----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------needs javascript ajax-->
 <div class="modal fade" id="createUserModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Create User</h3>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Create User</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
-            </div>
-            <div class="modal-body">
+			</div>
+			<div class="modal-body">
+			
+				
+				<form id="createUserForm" method="post">
+					<div class="form-group">
+						
+						<label for="example-text-input" class="col-2 col-form-label">Name (First Last)</label>
+						<div class="col-10">
+							
+							<input type="text" class="form-control"  placeholder="Enter email" id="nameInput">
+						</div>
+						
+						<label for="exampleInputEmail1">Email address</label>
+						<div class="col-10">
+						<input type="email" class="form-control" iaria-describedby="emailHelp" placeholder="Enter email" id="emailInput">
+						</div>
+						
+						
+						<label for="example-date-input" class="col-2 col-form-label">Enter Date of Birth MM/DD/YYYY</label>
+						<div class="col-10">
+							<input class="form-control" type="date" id="birthdayInput">
+						</div>		
+						
+						
+					</div>
+					 
+					
+				</form>	
+				
+				
+				
+				
+			</div>
 
+			<div class="modal-footer">
+				
+				<button type="submit" id="createUserSubmit"  class="btn btn-primary" data-dismiss="modal">Submit</button>
+				
 
-                <form id="createUserForm" method="post">
-                    <div class="form-group">
-
-                        <label for="example-text-input" class="col-2 col-form-label">Name</label>
-                        <div class="col-10">
-
-                            <input type="text" class="form-control" placeholder="Enter email" value="First Last" id="nameInput">
-                        </div>
-
-                        <label for="exampleInputEmail1">Email address</label>
-                        <div class="col-10">
-                            <input type="email" class="form-control" iaria-describedby="emailHelp" placeholder="Enter email" id="emailInput">
-                        </div>
-
-
-                        <label for="example-date-input" class="col-2 col-form-label">Enter Date of Birth</label>
-                        <div class="col-10">
-                            <input class="form-control" type="date" value="2011-08-19" id="birthdayInput">
-                        </div>
-
-
-                    </div>
-
-
-                </form>
-
-
-
-
-            </div>
-
-            <div class="modal-footer">
-
-                <button type="submit" id="createUserSubmit" class="btn btn-primary">Submit</button>
-
-
-            </div>
-        </div>
-    </div>
+			</div>
+		</div>
+	</div>
 </div>
+<!--END OF CREATE USER MODAL===========================================================================-->
 
-<!--create goals modal
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#createGoals">Open Modal</button>-->
-<div id="createGoal" class="modal fade" role="dialog">
-    <div class="modal-dialog">
+<!--DELETE USER MODAL===========================================================================-->
+<div class="modal fade" id="deleteUserModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h3 class="modal-title">Delete User</h3>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
 
+
+				<form id="deleteUserForm" method="post">
+					<div class="form-group">
+
+						<h4>Please enter the following data and click confirm to delete user from A Better Me.</h4>
+						<label for="exampleInputEmail1">Email address</label>
+						<div class="col-10">
+							<input type="email" class="form-control" iaria-describedby="emailHelp" placeholder="Enter email" id="emailInput2">
+						</div>
+
+
+						<label for="example-date-input" class="col-2 col-form-label">Enter Date of Birth</label>
+						<div class="col-10">
+							<input class="form-control" type="date" value="2011-08-19"  id="birthdayInput2">
+						</div>		
+
+
+					</div>
+
+
+				</form>	
+
+
+
+
+			</div>
+
+			<div class="modal-footer">
+
+				<button type="submit" id="deleteUserSubmit"  class="btn btn-primary">Confirm</button>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--END OF CREATE USER MODAL===========================================================================-->
+
+
+<<<<<<< HEAD
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
@@ -538,11 +657,15 @@
 
 <!--AWARD MODALS===========================================================================-->
 <!--LOG OUT MODAL ===========================================================================-->
+=======
+<!--LOG OUT BUTTON/MODAL NEEDED?===========================================================================-->
+>>>>>>> f81a6611db08d34059150cd54df93db24497ca46
 
 
 
 
-<!--end of edit goals modal
 
 <!--END OF MODALS=================================================================================-->
 <!--=======================================================================================-->
+
+
