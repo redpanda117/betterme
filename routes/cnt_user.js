@@ -54,6 +54,8 @@ router.post("/update", function (req, res) {
         email: req.body.email,
         DOB: req.body.DOB,
         fullName: req.body.fullName,
+        goalsCompleted: parseInt(req.body.goalsCompleted),
+        userScore: parseInt(req.body.userScore),
         where: {
             email: req.body.email
         }

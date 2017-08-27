@@ -55,7 +55,6 @@ $(document).ready(function () {
                 console.log(photoURL);
 
 
-
             } else {
                 // User is signed out. 
                 firebase.auth().signInWithPopup(provider).then(function (result) {
@@ -81,17 +80,17 @@ $(document).ready(function () {
 
     })
 
-   //  signout event need to find out where this will be place.
-   /* $("#goalsButton").on("click", function (event) {
-        firebase.auth().signOut().then(function () {
-            // Sign-out successful.
-            console.log("signout");
-        }).catch(function (error) {
-            // An error happened.
-             console.error('Sign Out Error', error);
-        });
-    }
-*/
+    //  signout event need to find out where this will be place.
+    /* $("#goalsButton").on("click", function (event) {
+         firebase.auth().signOut().then(function () {
+             // Sign-out successful.
+             console.log("signout");
+         }).catch(function (error) {
+             // An error happened.
+              console.error('Sign Out Error', error);
+         });
+     }
+ */
 
     //getting quotes from the qoute.rest api
     var inspirationalCategory = [
@@ -125,17 +124,16 @@ $(document).ready(function () {
             // Creating a div to hold the Quote
             var quoteDiv = $("<div class='randomQuote'>");
             //adding a bootstrap class to the new div. Help in not needing to use floats in the css
-            quoteDiv.addClass("show col-4");
+            quoteDiv.addClass("show col-md-6");
             // Storing the quote data
             var quoteData = response.contents.quotes[0].quote;
-            var quote = $("<h2>").text(quoteData);
+            var quote = $("<p>").text(quoteData);
             quote.attr("id", "randomQuote");
             //console.log(quoteData);
             //store author data
             var authorData = response.contents.quotes[0].author;
             var author = $("<p>").text("By: " + authorData);
             author.attr("id", "randomAuthor");
-		  author.addClass("pull-right");
             //console.log(authorData);
             //appending it to the div 
             quoteDiv.append(quote);
@@ -148,6 +146,7 @@ $(document).ready(function () {
         });
     }
 });
+
 function loadGoals() {
     var queryURL = "/user/find"
     console.log("loadGoals userEmail: " + sessionStorage.getItem('email'));
@@ -237,107 +236,71 @@ function populateGoalTable(res) {
     }
 }
 
-function addGoal(){
+function addGoal() {
     var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "http://abetterme.herokuapp.com/goal/create",
-  "method": "POST",
-  "headers": {
-    "content-type": "application/x-www-form-urlencoded"
-  },
-  "data": {
-    "title": $("#titleInput").val().trim(),
-    "startDate": $("#startDateInput").val(),
-    "endDate": $("#endDateInput").val(),
-    "difficulty": $("difficultySelect").val(),  
-    "description": $("#descriptionInput").val().trim(),
-  }
+        "async": true,
+        "crossDomain": true,
+        "url": "/goal/create",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+        },
+        "data": {
+            "title": $("#titleInput").val().trim(),
+            "startDate": $("#startDateInput").val(),
+            "endDate": $("#endDateInput").val(),
+            "difficulty": $("difficultySelect").val(),
+            "description": $("#descriptionInput").val().trim(),
+        }
+    }
+
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        return (settings.data);
+    });
 }
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-    return(settings.data);
-});
-}
-
-$("#submitNewGoal").on("click", function() {
-	addGoal();
+$("#submitNewGoal").on("click", function () {
+    addGoal();
 });
 
-
-
-
-
-
-//function to Create a new user//
 function createNewUser() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "/user/create",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+        },
+        "data": {
+            "email": $("#emailInput").val().trim(),
+            "DOB": $("#birthdayInput").val().trim(),
+            "fullName": $("#nameInput").val().trim(),
+        }
+    };
+    $.ajax(settings).done(function (response) {
+        return (settings.data);
+
+//can't get it to close modal on submit
 
 
-	var settings = {
-		"async": true,
-		"crossDomain": true,
-		"url": "/user/create",
-		"method": "POST",
-		"headers": {
-			"content-type": "application/x-www-form-urlencoded"
-		},
-		"data": {
-			"email": $("#emailInput").val().trim(),
-			"DOB": $("#birthdayInput").val().trim(),
-			"fullName": $("#nameInput").val().trim(),
-		}
-	};
-	$.ajax(settings).done(function(response) {
-		return(settings.data);
-
-		//can't get it to close modal on submit
-
-
-	});
+    });
 
 };
 
-$("#createUserSubmit").on("click", function() {
+$("#createUserSubmit").on("click", function () {
 
-	createNewUser();
+    createNewUser();
 
+});
 
+/**
+ * This function increments or decrements the current user score based on the value passed.
+ * @param val
+ */
+function updateUserScore(val){
 
-}); 
-
-//
-$("#createUserLink").on("click", function() {
-	createNewUser();
-	
-}); 
-
-//
-//$("#createUserButton").on("click", function() {
-//		createNewUser();
-//
-//
-//}); 
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
 
 
