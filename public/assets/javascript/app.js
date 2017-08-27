@@ -27,7 +27,7 @@ $(document).ready(function () {
     //google authentication
     var provider = new firebase.auth.GoogleAuthProvider();
 
-    //google sign in if before going to goals page 
+    //google sign in if before going to goals page
     $("#goalsButton").on("click", function (event) {
         firebase.auth().onAuthStateChanged(function (user) {
 
@@ -56,7 +56,7 @@ $(document).ready(function () {
 
 
             } else {
-                // User is signed out. 
+                // User is signed out.
                 firebase.auth().signInWithPopup(provider).then(function (result) {
                     // This gives you a Google Access Token. You can use it to access the Google API.
                     var token = result.credential.accessToken;
@@ -135,10 +135,10 @@ $(document).ready(function () {
             var author = $("<p>").text("By: " + authorData);
             author.attr("id", "randomAuthor");
             //console.log(authorData);
-            //appending it to the div 
+            //appending it to the div
             quoteDiv.append(quote);
             quoteDiv.append(author);
-            //displaying it in the html   
+            //displaying it in the html
             $("#quote").prepend(quoteDiv);
 
             //placeholder display

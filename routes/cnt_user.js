@@ -4,10 +4,10 @@ var express = require('express');
 var db = require("../models");
 var router = express.Router();
 
-"use strict";
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/findall", function (req, res) {
+    "use strict";
     db.User.findAll({
         include: [{
             model: db.Goal,
@@ -63,7 +63,6 @@ router.post("/update", function (req, res) {
         res.redirect("/");
     });
 });
-
 
 router.post("/del", function (req, res) {
     db.User.destroy({
