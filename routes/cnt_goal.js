@@ -43,7 +43,10 @@ router.post("/create", function (req, res) {
         endDate: req.body.endDate,
         description: req.body.description,
         difficulty: req.body.difficulty,
-        status: req.body.status
+        status: req.body.status,
+        completed: parseInt(req.body.completed)
+
+
     }).then(function () {
         res.redirect("/");
     });
@@ -57,7 +60,7 @@ router.post("/update", function (req, res) {
         description: req.body.description,
         difficulty: req.body.difficulty,
         status: req.body.status,
-        goalsCompleted: req.body.goalsCompleted,
+        completed: parseInt(req.body.completed),
 
         where: {
             goalID: req.body.goalID
