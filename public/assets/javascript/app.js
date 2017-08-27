@@ -237,10 +237,12 @@ function populateGoalTable(res) {
 }
 
 function addGoal(){
+    var difficalt =$("#difficultySelect").val();
+    var difficulty = parseInt(difficalt);
     var settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://abetterme.herokuapp.com/goal/create",
+  "url": "/goal/create",
   "method": "POST",
   "headers": {
     "content-type": "application/x-www-form-urlencoded"
@@ -249,16 +251,16 @@ function addGoal(){
     "title": $("#titleInput").val().trim(),
     "startDate": $("#startDateInput").val(),
     "endDate": $("#endDateInput").val(),
-    "difficulty": $("difficultySelect").val(),  
+    "difficulty": difficulty,  
     "description": $("#descriptionInput").val().trim(),
   }
-}
-
+};
+ console.log(settings)
 $.ajax(settings).done(function (response) {
     console.log(response);
     return(settings.data);
 });
-}
+};
 
 $("#submitNewGoal").on("click", function() {
 	addGoal();
@@ -282,9 +284,6 @@ function createNewUser() {
 	$.ajax(settings).done(function(response) {
 		return(settings.data);
 		
-//can't get it to close modal on submit
-			
-
 	});
 
 };
