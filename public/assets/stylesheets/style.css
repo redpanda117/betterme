@@ -238,7 +238,10 @@ button:hover {
 	background-color: #def ;
 }
 
-
+#navbarProfilePic{
+    height: 50px;
+    width: auto;
+}
 /*for profile pic
 #navbarProfilePic{
 	margin-right: 5px;

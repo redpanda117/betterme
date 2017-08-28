@@ -2,7 +2,6 @@
  Bernard Williams
 
  */
-
 $(document).ready(function () {
 
     //When the document has finished loading load the goals using the email address
@@ -53,7 +52,8 @@ $(document).ready(function () {
                 sessionStorage.setItem('providerData', providerData);
 
                 console.log(photoURL);
-
+                //get profile pic in nav bar
+                $("#navbarProfilePic").attr("src", photoURL);
 
             } else {
                 // User is signed out.
@@ -72,8 +72,8 @@ $(document).ready(function () {
                     var email = error.email;
                     // The firebase.auth.AuthCredential type that was used.
                     var credential = error.credential;
-                    // ...
-
+                    //get profile pic in nav bar
+                    $("#navbarProfilePic").attr("src", photoURL);
                 });
             }
         });
@@ -236,33 +236,6 @@ function populateGoalTable(res) {
     }
 }
 
-
-function addGoal(){
-    var difficalt =$("#difficultySelect").val();
-    var difficulty = parseInt(difficalt);
-    var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "/goal/create",
-  "method": "POST",
-  "headers": {
-    "content-type": "application/x-www-form-urlencoded"
-  },
-  "data": {
-    "title": $("#titleInput").val().trim(),
-    "startDate": $("#startDateInput").val(),
-    "endDate": $("#endDateInput").val(),
-    "difficulty": difficulty,  
-    "description": $("#descriptionInput").val().trim(),
-  }
-};
- console.log(settings)
-$.ajax(settings).done(function (response) {
-    console.log(response);
-    return(settings.data);
-});
-};
-
 function addGoal() {
     var settings = {
         "async": true,
@@ -279,7 +252,7 @@ function addGoal() {
             "difficulty": $("#difficultySelect").val(),
             "description": $("#descriptionInput").val().trim(),
         }
-    };
+    }
 
     $.ajax(settings).done(function (response) {
         console.log(response);
@@ -287,31 +260,32 @@ function addGoal() {
     });
 }
 
-
 $("#submitNewGoal").on("click", function () {
     addGoal();
 });
 
 function createNewUser() {
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "/user/create",
+        "method": "POST",
+        "headers": {
+            "content-type": "application/x-www-form-urlencoded"
+        },
+        "data": {
+            "email": $("#emailInput").val().trim(),
+            "DOB": $("#birthdayInput").val().trim(),
+            "fullName": $("#nameInput").val().trim(),
+        }
+    };
+    $.ajax(settings).done(function (response) {
+        return (settings.data);
 
-	var settings = {
-		"async": true,
-		"crossDomain": true,
-		"url": "/user/create",
-		"method": "POST",
-		"headers": {
-			"content-type": "application/x-www-form-urlencoded"
-		},
-		"data": {
-			"email": $("#emailInput").val().trim(),
-			"DOB": $("#birthdayInput").val().trim(),
-			"fullName": $("#nameInput").val().trim(),
-		}
-	};
-	$.ajax(settings).done(function(response) {
-		return(settings.data);
-		
-	});
+//can't get it to close modal on submit
+
+
+    });
 
 };
 
