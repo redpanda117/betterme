@@ -154,7 +154,6 @@ h5{
 }
 
 
-
 #quotePanel {
 	background-color: white;
 	margin: auto;
@@ -298,8 +297,15 @@ button:hover {
 	color: black ;
 	background-color: #def ;
 }
+button:hover {
+	color: black ;
+	background-color: #def ;
+}
 
-
+#navbarProfilePic{
+    height: 50px;
+    width: auto;
+}
 /*for profile pic
 #navbarProfilePic{
 	margin-right: 5px;
@@ -309,5 +315,4 @@ button:hover {
 /*	width: 20px;
 /*	height: 20px;
 }
-
 */
