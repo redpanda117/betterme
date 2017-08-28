@@ -124,16 +124,17 @@ $(document).ready(function () {
             // Creating a div to hold the Quote
             var quoteDiv = $("<div class='randomQuote'>");
             //adding a bootstrap class to the new div. Help in not needing to use floats in the css
-            quoteDiv.addClass("show col-md-6");
+            quoteDiv.addClass("show");
             // Storing the quote data
             var quoteData = response.contents.quotes[0].quote;
-            var quote = $("<p>").text(quoteData);
+            var quote = $("<h5>").text(quoteData);
             quote.attr("id", "randomQuote");
             //console.log(quoteData);
             //store author data
             var authorData = response.contents.quotes[0].author;
-            var author = $("<p>").text("By: " + authorData);
+            var author = $("<p>").text("- " + authorData);
             author.attr("id", "randomAuthor");
+		   author.addClass("pull-right");
             //console.log(authorData);
             //appending it to the div
             quoteDiv.append(quote);
