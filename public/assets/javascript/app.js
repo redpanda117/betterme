@@ -2,7 +2,6 @@
  Bernard Williams
 
  */
-
 $(document).ready(function () {
 
     //When the document has finished loading load the goals using the email address
@@ -53,7 +52,8 @@ $(document).ready(function () {
                 sessionStorage.setItem('providerData', providerData);
 
                 console.log(photoURL);
-
+                //get profile pic in nav bar
+                $("#navbarProfilePic").attr("src", photoURL);
 
             } else {
                 // User is signed out.
@@ -72,8 +72,8 @@ $(document).ready(function () {
                     var email = error.email;
                     // The firebase.auth.AuthCredential type that was used.
                     var credential = error.credential;
-                    // ...
-
+                    //get profile pic in nav bar
+                    $("#navbarProfilePic").attr("src", photoURL);
                 });
             }
         });
@@ -124,16 +124,17 @@ $(document).ready(function () {
             // Creating a div to hold the Quote
             var quoteDiv = $("<div class='randomQuote'>");
             //adding a bootstrap class to the new div. Help in not needing to use floats in the css
-            quoteDiv.addClass("show col-md-6");
+            quoteDiv.addClass("show");
             // Storing the quote data
             var quoteData = response.contents.quotes[0].quote;
-            var quote = $("<p>").text(quoteData);
+            var quote = $("<h5>").text(quoteData);
             quote.attr("id", "randomQuote");
             //console.log(quoteData);
             //store author data
             var authorData = response.contents.quotes[0].author;
-            var author = $("<p>").text("By: " + authorData);
+            var author = $("<p>").text("- " + authorData);
             author.attr("id", "randomAuthor");
+		   author.addClass("pull-right");
             //console.log(authorData);
             //appending it to the div
             quoteDiv.append(quote);
@@ -249,7 +250,7 @@ function addGoal() {
             "title": $("#titleInput").val().trim(),
             "startDate": $("#startDateInput").val(),
             "endDate": $("#endDateInput").val(),
-            "difficulty": $("difficultySelect").val(),
+            "difficulty": $("#difficultySelect").val(),
             "description": $("#descriptionInput").val().trim(),
         }
     }
