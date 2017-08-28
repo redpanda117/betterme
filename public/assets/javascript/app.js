@@ -2,7 +2,6 @@
  Bernard Williams
 
  */
-
 $(document).ready(function () {
 
     //When the document has finished loading load the goals using the email address
@@ -53,7 +52,8 @@ $(document).ready(function () {
                 sessionStorage.setItem('providerData', providerData);
 
                 console.log(photoURL);
-
+                //get profile pic in nav bar
+                $("#navbarProfilePic").attr("src", photoURL);
 
             } else {
                 // User is signed out.
@@ -72,8 +72,8 @@ $(document).ready(function () {
                     var email = error.email;
                     // The firebase.auth.AuthCredential type that was used.
                     var credential = error.credential;
-                    // ...
-
+                    //get profile pic in nav bar
+                    $("#navbarProfilePic").attr("src", photoURL);
                 });
             }
         });
@@ -249,7 +249,7 @@ function addGoal() {
             "title": $("#titleInput").val().trim(),
             "startDate": $("#startDateInput").val(),
             "endDate": $("#endDateInput").val(),
-            "difficulty": $("difficultySelect").val(),
+            "difficulty": $("#difficultySelect").val(),
             "description": $("#descriptionInput").val().trim(),
         }
     }
