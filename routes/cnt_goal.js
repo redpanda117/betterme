@@ -44,7 +44,7 @@ router.post("/create", function (req, res) {
         description: req.body.description,
         difficulty: req.body.difficulty,
         status: req.body.status,
-        completed: parseInt(req.body.completed)
+        completed: req.body.completed
 
 
     }).then(function () {
