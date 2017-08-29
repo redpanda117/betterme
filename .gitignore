@@ -45,6 +45,7 @@ typings/
 .npm
 
 .idea/
+config/
 
 # Optional eslint cache
 .eslintcache
