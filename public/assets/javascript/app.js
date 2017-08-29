@@ -52,6 +52,8 @@ $(document).ready(function () {
             sessionStorage.setItem('phoneNumber', phoneNumber);
             sessionStorage.setItem('providerData', providerData);
 
+            $("#navbarProfilePic").attr('src', photoURL);
+
             console.log(photoURL);
             loadGoals();
 
@@ -217,6 +219,16 @@ function populateGoalTable(res) {
         for (var i = 0; i < goals.length; i++) {
 
             var goal = goals[i];
+
+            var $editButton = $('<i>');
+            $editButton.addClass("fa fa-pencil-square-o");
+            $editButton.attr('aria-hidden', 'true');
+            $editButton.attr('id', goals[i].goalID);
+            $editButton.on('click', function () {
+                console.log('Edit ID ' + $(this).attr('id'));
+                editGoal($(this).attr('id'));
+            });
+
             var $deleteButton = $('<i>');
             $deleteButton.addClass("fa fa-trash-o");
             $deleteButton.attr('aria-hidden', 'true');
@@ -233,6 +245,7 @@ function populateGoalTable(res) {
             var $newDifficulty = $('<td>');
             var $newStatus = $('<td>');
             var $delBtnCell = $('<td>');
+            var $editBtnCell = $('<td>');
 
             $newGoalTitle.text(goal.title);
             $newStartDate.text(goal.startDate);
@@ -241,7 +254,8 @@ function populateGoalTable(res) {
             $newStatus.text(goal.status);
 
             $delBtnCell.append($deleteButton);
-            $newRow.append('<td></td>');
+            $editBtnCell.append($editButton);
+            $newRow.append($editBtnCell);
             $newRow.append($delBtnCell);
             $newRow.append($newGoalTitle);
             $newRow.append($newStartDate);
@@ -253,6 +267,11 @@ function populateGoalTable(res) {
             console.log("add new row")
         }
     }
+}
+
+
+function editGoal(goalID){
+
 }
 
 function addGoal() {
