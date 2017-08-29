@@ -2,12 +2,12 @@
  Bernard Williams
 
  */
+
 $(document).ready(function () {
 
     //When the document has finished loading load the goals using the email address
     //Currently stored in the session.
     //If there is not one the table will be blank.
-    loadGoals();
 
 
     var fullName = "";
@@ -27,58 +27,59 @@ $(document).ready(function () {
     var provider = new firebase.auth.GoogleAuthProvider();
 
     //google sign in if before going to goals page
-    $("#goalsButton").on("click", function (event) {
-        firebase.auth().onAuthStateChanged(function (user) {
 
-            if (user) {
-                // User is signed in.
-                //works but need to findout how to redirect when user already login
-                //window.location = 'home.html';
+    firebase.auth().onAuthStateChanged(function (user) {
+
+        if (user) {
+            console.log('Im here');
+            // User is signed in.
+            //works but need to findout how to redirect when user already login
+            //window.location = 'home.html';
+            console.log(user.email);
+            //=======
+            var displayName = user.displayName;
+            var email = user.email;
+            var emailVerified = user.emailVerified;
+            var photoURL = user.photoURL;
+            var uid = user.uid;
+            var phoneNumber = user.phoneNumber;
+            var providerData = user.providerData;
+            sessionStorage.setItem('displayName', displayName);
+            sessionStorage.setItem('email', email);
+            sessionStorage.setItem('emailVerified', emailVerified);
+            sessionStorage.setItem('photoURL', photoURL);
+            sessionStorage.setItem('uid', uid);
+            sessionStorage.setItem('phoneNumber', phoneNumber);
+            sessionStorage.setItem('providerData', providerData);
+
+            console.log(photoURL);
+            loadGoals();
+
+        } else {
+            // User is signed out.
+            firebase.auth().signInWithPopup(provider).then(function (result) {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                var token = result.credential.accessToken;
+                // The signed-in user info.
+                var user = result.user;
+                // loging the user email
+                sessionStorage.setItem('email', user.email);
                 console.log(user.email);
-                //=======
-                var displayName = user.displayName;
-                var email = user.email;
-                var emailVerified = user.emailVerified;
-                var photoURL = user.photoURL;
-                var uid = user.uid;
-                var phoneNumber = user.phoneNumber;
-                var providerData = user.providerData;
                 sessionStorage.setItem('displayName', displayName);
-                sessionStorage.setItem('email', email);
-                sessionStorage.setItem('emailVerified', emailVerified);
-                sessionStorage.setItem('photoURL', photoURL);
-                sessionStorage.setItem('uid', uid);
-                sessionStorage.setItem('phoneNumber', phoneNumber);
-                sessionStorage.setItem('providerData', providerData);
+                createUser(user.email, user.displayName);
+            }).catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                // ...
+            });
+        }
+    });
 
-                console.log(photoURL);
-                //get profile pic in nav bar
-                $("#navbarProfilePic").attr("src", photoURL);
-
-            } else {
-                // User is signed out.
-                firebase.auth().signInWithPopup(provider).then(function (result) {
-                    // This gives you a Google Access Token. You can use it to access the Google API.
-                    var token = result.credential.accessToken;
-                    // The signed-in user info.
-                    var user = result.user;
-                    // loging the user email
-                    console.log(user.email);
-                }).catch(function (error) {
-                    // Handle Errors here.
-                    var errorCode = error.code;
-                    var errorMessage = error.message;
-                    // The email of the user's account used.
-                    var email = error.email;
-                    // The firebase.auth.AuthCredential type that was used.
-                    var credential = error.credential;
-                    //get profile pic in nav bar
-                    $("#navbarProfilePic").attr("src", photoURL);
-                });
-            }
-        });
-
-    })
 
     //  signout event need to find out where this will be place.
     /* $("#goalsButton").on("click", function (event) {
@@ -89,8 +90,7 @@ $(document).ready(function () {
              // An error happened.
               console.error('Sign Out Error', error);
          });
-     }
- */
+     }*/
 
     //getting quotes from the qoute.rest api
     var inspirationalCategory = [
@@ -124,17 +124,16 @@ $(document).ready(function () {
             // Creating a div to hold the Quote
             var quoteDiv = $("<div class='randomQuote'>");
             //adding a bootstrap class to the new div. Help in not needing to use floats in the css
-            quoteDiv.addClass("show");
+            quoteDiv.addClass("show col-md-6");
             // Storing the quote data
             var quoteData = response.contents.quotes[0].quote;
-            var quote = $("<h5>").text(quoteData);
+            var quote = $("<p>").text(quoteData);
             quote.attr("id", "randomQuote");
             //console.log(quoteData);
             //store author data
             var authorData = response.contents.quotes[0].author;
-            var author = $("<p>").text("- " + authorData);
+            var author = $("<p>").text("By: " + authorData);
             author.attr("id", "randomAuthor");
-		   author.addClass("pull-right");
             //console.log(authorData);
             //appending it to the div
             quoteDiv.append(quote);
@@ -164,6 +163,22 @@ function loadGoals() {
     });
 }
 
+function createUser(email, fullName) {
+    var queryURL = "/user/create"
+    $.ajax({
+        url: queryURL,
+        method: "POST",
+        data: {
+            email: email,
+            fullName: fullName
+        }
+    }).done(function (response) {
+        $('#userName').text(sessionStorage.getItem("displayName") + "   ");
+        console.log(response);
+        populateGoalTable(response);
+    });
+}
+
 function deleteGoal(goalID) {
     var queryURL = "/goal/del"
     console.log("Del GoalID: " + goalID);
@@ -181,6 +196,9 @@ function deleteGoal(goalID) {
 
 
 function populateGoalTable(res) {
+
+    //Update the add/edit goals modal with the userID of the logged in user.
+    $("#goalUserID").attr('value', res[0].userID)
 
     $("#goalTable").empty();
     //console.log(res[0]);
@@ -250,7 +268,7 @@ function addGoal() {
             "title": $("#titleInput").val().trim(),
             "startDate": $("#startDateInput").val(),
             "endDate": $("#endDateInput").val(),
-            "difficulty": $("#difficultySelect").val(),
+            "difficulty": $("difficultySelect").val(),
             "description": $("#descriptionInput").val().trim(),
         }
     }
@@ -300,8 +318,27 @@ $("#createUserSubmit").on("click", function () {
  * This function increments or decrements the current user score based on the value passed.
  * @param val
  */
-function updateUserScore(val){
+function updateUserScore(val) {
+    var queryURL = "/user/find"
+    console.log("Update User Score userEmail: " + sessionStorage.getItem('email'));
+    $.ajax({
+        url: queryURL,
+        method: "POST",
+        data: {
+            email: sessionStorage.getItem('email')
+        }
+    }).done(function (res) {
 
+        res[0].userScore += val;
+        queryURL = "/user/update"
+        $.ajax({
+            url: queryURL,
+            method: "POST",
+            data: res[0]
+        }).done(function (res) {
+            console.log(res);
+        });
+    });
 }
 
 
