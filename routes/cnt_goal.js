@@ -33,6 +33,20 @@ router.post("/find", function (req, res) {
             res.json(data);
         });
 });
+router.post("/findone", function (req, res) {
+
+    db.Goal.findAll({
+        include: [{
+            model: db.Remark
+        }],
+        where: {
+            goalID: parseInt(req.body.goalID)
+        }
+    })
+        .then(function (data) {
+            res.json(data);
+        });
+});
 
 router.post("/create", function (req, res) {
     db.Goal.create({

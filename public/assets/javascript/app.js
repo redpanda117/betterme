@@ -85,13 +85,13 @@ $(document).ready(function () {
 
     //  signout event need to find out where this will be place.
     /* $("#goalsButton").on("click", function (event) {
-         firebase.auth().signOut().then(function () {
-             // Sign-out successful.
-             console.log("signout");
-         }).catch(function (error) {
-             // An error happened.
-              console.error('Sign Out Error', error);
-         });
+     firebase.auth().signOut().then(function () {
+     // Sign-out successful.
+     console.log("signout");
+     }).catch(function (error) {
+     // An error happened.
+     console.error('Sign Out Error', error);
+     });
      }*/
 
     //getting quotes from the qoute.rest api
@@ -269,10 +269,26 @@ function populateGoalTable(res) {
 }
 
 
-function editGoal(goalID){
+function editGoal(goalID) {
+
+    var queryURL = "/goal/findone"
+    console.log("Update Goal goalID: " + goalID);
+    $.ajax({
+        url: queryURL,
+        method: "POST",
+        data: {
+            goalID: goalID
+        }
+    }).done(function (res) {
+//Populate the editGoalModal and then display it.
+        console.log("I am here too");
+        $('#editGoalTitle').text(res[0].title);
+
+        jQuery("#editGoalForm").modal('show');
+
+    });
 
 }
-
 function addGoal() {
     var settings = {
         "async": true,
