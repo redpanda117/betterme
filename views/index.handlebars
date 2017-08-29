@@ -51,9 +51,11 @@
 
     <!--MAIN PAGE BUTTONS===================================================================================-->
     <!--first row for buttons-->
+<!--
     <div class="row" id="buttonsDiv">
-        <!--spacer for centering-->
+        spacer for centering
         <div class="col-5"></div>
+-->
 
         <!--BUTTON CONTAINER FOR ORIGINAL -->
         <!--	<div class="col-2" class="col align-self-center">
@@ -70,9 +72,11 @@
 
 
         <!--spacer for centering-->
+<!--
         <div class="col-5"></div>
-        <!--end of first row for buttons-->
+        end of first row for buttons
     </div>
+-->
 
 
     <!--QUOTE===================================================================================-->
@@ -80,11 +84,10 @@
 
     <!--row holding quote-->
     <div class="row">
-        <!--spacer for centering-->
-        <div class="col-4"></div>
+      
 
         <!--quote-->
-        <div class="col-4">
+        <div class="col-12">
             <div class="panel panel-default" id="quotePanel">
                 <div class="panel-body" id="quote">
                     <!--quote goes here-->
@@ -96,8 +99,7 @@
             <!--end of quote-->
         </div>
 
-        <!--spacer for centering-->
-        <div class="col-4"></div>
+     
         <!--end of row holding quote-->
     </div>
 
@@ -196,9 +198,7 @@
                             <button type="button" class="btn btn-primary pull-right" id="completedButton">Completed</button>
                         </a>
             -->
-            <a href="#" data-toggle="modal" data-target="#awardModal1" class="completedButtons">
-                <button type="button" class="btn btn-primary pull-right" id="completedButton">Completed</button>
-            </a>
+
         </div>
 
 
@@ -513,20 +513,75 @@
                         <input type="number" class="form-control" id="difficulty" name="difficulty" min="1" max="10" width="75"
                                value="5" required>
                     </div>
+				 <div class="modal-footer">
 
+
+				 
                     <input type="submit" class="btn btn-success" id="btnModAddGoal" value="Add Goal">
+				 </div>
+                </form>
+            </div>
+
+           
+        </div>
+    </div>
+</div>
+
+<!--ADD/EDIT GOALS/SCHEDULE MODAL===========================================================================-->
+<div class="modal fade" id="editGoalsModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add/Edit Goal</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <form id="editGoalForm" method="post" action="/goal/update">
+                    <input type="hidden" name="goalID" value="" id="goalID">
+                    <div class="form-group">
+                        <label for="editGoalStatus">Goal Status:</label>
+                        <select class="form-control" id="editGoalStatus" name="status">
+                            <option>New</option>
+                            <option>In-Progress</option>
+                            <option>Completed</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="editGoalTitle">Goal Title:</label>
+                        <input type="text" id="editGoalTitle" class="form-control" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editGoalDescription">Description:</label>
+                        <input type="text" id="editGoalDescription" name="description" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editGoalStartDate">Start Date:</label>
+                        <input type="date" id="editGoalStartDate" class="form-control" name="startDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editGoalEndDate">End Date:</label>
+                        <input type="date" id="editGoalEndDate" class="form-control" name="endDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editGoalDifficulty">Goal Difficulty: </label>
+                        <input type="number" class="form-control" id="editGoalDifficulty" name="difficulty" min="1" max="10" width="75"
+                               value="5" required>
+                    </div>
+                    <input type="submit" class="btn btn-success" id="btnModAddGoal" value="Edit Goal">
                 </form>
             </div>
 
             <div class="modal-footer">
-                <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-save"
-                                                                    aria-hidden="true"></span>
-                </button>
 
             </div>
         </div>
     </div>
 </div>
+
+
 
 <!--GOAL COMMENT MODAL===========================================================================-->
 <!--END OF GOAL COMMENT MODAL===========================================================================-->

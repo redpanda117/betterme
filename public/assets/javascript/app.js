@@ -85,13 +85,13 @@ $(document).ready(function () {
 
     //  signout event need to find out where this will be place.
     /* $("#goalsButton").on("click", function (event) {
-         firebase.auth().signOut().then(function () {
-             // Sign-out successful.
-             console.log("signout");
-         }).catch(function (error) {
-             // An error happened.
-              console.error('Sign Out Error', error);
-         });
+     firebase.auth().signOut().then(function () {
+     // Sign-out successful.
+     console.log("signout");
+     }).catch(function (error) {
+     // An error happened.
+     console.error('Sign Out Error', error);
+     });
      }*/
 
     //getting quotes from the qoute.rest api
@@ -126,16 +126,17 @@ $(document).ready(function () {
             // Creating a div to hold the Quote
             var quoteDiv = $("<div class='randomQuote'>");
             //adding a bootstrap class to the new div. Help in not needing to use floats in the css
-            quoteDiv.addClass("show col-md-6");
+            quoteDiv.addClass("show col-md-12");
             // Storing the quote data
             var quoteData = response.contents.quotes[0].quote;
-            var quote = $("<p>").text(quoteData);
+            var quote = $("<h5>").text(quoteData);
             quote.attr("id", "randomQuote");
             //console.log(quoteData);
             //store author data
             var authorData = response.contents.quotes[0].author;
-            var author = $("<p>").text("By: " + authorData);
+            var author = $("<p>").text("- " + authorData);
             author.attr("id", "randomAuthor");
+		   author.addClass("pull-right");
             //console.log(authorData);
             //appending it to the div
             quoteDiv.append(quote);
@@ -198,7 +199,6 @@ function deleteGoal(goalID) {
 
 
 function populateGoalTable(res) {
-
     //Update the add/edit goals modal with the userID of the logged in user.
     $("#goalUserID").attr('value', res[0].userID)
 
@@ -270,10 +270,33 @@ function populateGoalTable(res) {
 }
 
 
-function editGoal(goalID){
+function editGoal(goalID) {
+
+    var queryURL = "/goal/findone"
+    console.log("Update Goal goalID: " + goalID);
+    $.ajax({
+        url: queryURL,
+        method: "POST",
+        data: {
+            goalID: goalID
+        }
+    }).done(function (res) {
+    //Populate the editGoalModal and then display it.
+        console.log("I am here too");
+
+        console.log(res[0].title);
+
+        $("#editGoalsModal").modal('toggle');
+        $('#editGoalTitle').val(res[0].title);
+        $('#editGoalDescription').val(res[0].description);
+        $('#editGoalDifficulty').val(res[0].difficulty);
+        $('#editGoalStartDate').val(res[0].startDate);
+        $('#editGoalEndDate').val(res[0].endDate);
+        $('#editGoalStatus').val(res[0].status);
+        $('#goalID').attr('value',res[0].goalID);
+    });
 
 }
-
 function addGoal() {
     var settings = {
         "async": true,

@@ -33,6 +33,20 @@ router.post("/find", function (req, res) {
             res.json(data);
         });
 });
+router.post("/findone", function (req, res) {
+
+    db.Goal.findAll({
+        include: [{
+            model: db.Remark
+        }],
+        where: {
+            goalID: parseInt(req.body.goalID)
+        }
+    })
+        .then(function (data) {
+            res.json(data);
+        });
+});
 
 router.post("/create", function (req, res) {
     db.Goal.create({
@@ -44,7 +58,7 @@ router.post("/create", function (req, res) {
         description: req.body.description,
         difficulty: req.body.difficulty,
         status: req.body.status,
-        completed: parseInt(req.body.completed)
+        completed: req.body.completed
 
 
     }).then(function () {
@@ -53,21 +67,26 @@ router.post("/create", function (req, res) {
 });
 
 router.post("/update", function (req, res) {
-    db.Goal.update({
+
+    var newGoal = {
         title: req.body.title,
         startDate: req.body.startDate,
         endDate: req.body.endDate,
         description: req.body.description,
         difficulty: req.body.difficulty,
         status: req.body.status,
-        completed: parseInt(req.body.completed),
+        completed: parseInt(req.body.completed)
+    };
 
-        where: {
-            goalID: req.body.goalID
-        }
-    }).then(function () {
-        res.redirect("/");
-    });
+    db.Goal.update(newGoal,
+        {
+            where: {
+                goalID: req.body.goalID
+            }
+        })
+        .then(function () {
+            res.redirect("/");
+        });
 });
 
 router.post("/del", function (req, res) {
