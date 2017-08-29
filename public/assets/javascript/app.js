@@ -78,10 +78,10 @@ $(document).ready(function () {
             }
         });
 
-    })
+   })
 
     //  signout event need to find out where this will be place.
-    /* $("#goalsButton").on("click", function (event) {
+    $("#logOutLink").on("click", function (event) {
          firebase.auth().signOut().then(function () {
              // Sign-out successful.
              console.log("signout");
@@ -89,8 +89,8 @@ $(document).ready(function () {
              // An error happened.
               console.error('Sign Out Error', error);
          });
-     }
- */
+     })
+ 
 
     //getting quotes from the qoute.rest api
     var inspirationalCategory = [
