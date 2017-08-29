@@ -197,6 +197,9 @@ function deleteGoal(goalID) {
 
 function populateGoalTable(res) {
 
+    //Update the add/edit goals modal with the userID of the logged in user.
+    $("#goalUserID").attr('value', res[0].userID)
+
     $("#goalTable").empty();
     //console.log(res[0]);
     var goals = res[0].Goals;
