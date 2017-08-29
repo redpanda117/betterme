@@ -49,6 +49,25 @@ router.post("/create", function (req, res) {
     });
 });
 
+router.post("/findorcreate", function (req, res) {
+    db.User.findOrCreate(
+        {
+            where: {
+                email: req.body.email
+            },
+            defaults:
+                {
+                    email: req.body.email,
+                    DOB: req.body.DOB,
+                    fullName: req.body.fullName
+                }
+        }).spread(function (user, created) {
+        console.log("Find or Create: " + user);
+        console.log("Created?: " + created);
+        res.redirect("/");
+    });
+});
+
 router.post("/update", function (req, res) {
     db.User.update({
         email: req.body.email,
