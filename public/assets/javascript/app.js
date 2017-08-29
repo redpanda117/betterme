@@ -3,12 +3,13 @@
 
  */
 
+var currentUser = {};
+
 $(document).ready(function () {
 
     //When the document has finished loading load the goals using the email address
     //Currently stored in the session.
     //If there is not one the table will be blank.
-
 
     var fullName = "";
 
@@ -136,7 +137,7 @@ $(document).ready(function () {
             var authorData = response.contents.quotes[0].author;
             var author = $("<p>").text("- " + authorData);
             author.attr("id", "randomAuthor");
-		   author.addClass("pull-right");
+            author.addClass("pull-right");
             //console.log(authorData);
             //appending it to the div
             quoteDiv.append(quote);
@@ -200,14 +201,18 @@ function deleteGoal(goalID) {
 
 function populateGoalTable(res) {
     //Update the add/edit goals modal with the userID of the logged in user.
-    $("#goalUserID").attr('value', res[0].userID)
+    $("#goalUserID").attr('value', res[0].userID);
+
+    //Create a local representation of the user for the UI
+    currentUser = res[0];
+    currentUser.totalScore = 0;
 
     $("#goalTable").empty();
     //console.log(res[0]);
     var goals = res[0].Goals;
 
     console.log(goals);
-//If there are goals show them.  If not show the message to get started.
+    //If there are goals show them.  If not show the message to get started.
     if (goals.length < 1) {
         var $newRow = $('<tr>');
         var $newMessage = $('<td>');
@@ -219,6 +224,9 @@ function populateGoalTable(res) {
         for (var i = 0; i < goals.length; i++) {
 
             var goal = goals[i];
+            if (goal.status == "Completed") {
+                currentUser.totalScore += goal.difficulty;
+            }
 
             var $editButton = $('<i>');
             $editButton.addClass("fa fa-pencil-square-o");
@@ -267,6 +275,8 @@ function populateGoalTable(res) {
             console.log("add new row")
         }
     }
+
+    $("#totalScore").text(currentUser.totalScore);
 }
 
 
@@ -281,9 +291,8 @@ function editGoal(goalID) {
             goalID: goalID
         }
     }).done(function (res) {
-    //Populate the editGoalModal and then display it.
+        //Populate the editGoalModal and then display it.
         console.log("I am here too");
-
         console.log(res[0].title);
 
         $("#editGoalsModal").modal('toggle');
@@ -293,10 +302,10 @@ function editGoal(goalID) {
         $('#editGoalStartDate').val(res[0].startDate);
         $('#editGoalEndDate').val(res[0].endDate);
         $('#editGoalStatus').val(res[0].status);
-        $('#goalID').attr('value',res[0].goalID);
+        $('#goalID').attr('value', res[0].goalID);
     });
-
 }
+
 function addGoal() {
     var settings = {
         "async": true,
