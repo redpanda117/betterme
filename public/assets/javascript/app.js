@@ -281,12 +281,19 @@ function editGoal(goalID) {
             goalID: goalID
         }
     }).done(function (res) {
-//Populate the editGoalModal and then display it.
+    //Populate the editGoalModal and then display it.
         console.log("I am here too");
-        $('#editGoalTitle').text(res[0].title);
 
-        jQuery("#editGoalForm").modal('show');
+        console.log(res[0].title);
 
+        $("#editGoalsModal").modal('toggle');
+        $('#editGoalTitle').val(res[0].title);
+        $('#editGoalDescription').val(res[0].description);
+        $('#editGoalDifficulty').val(res[0].difficulty);
+        $('#editGoalStartDate').val(res[0].startDate);
+        $('#editGoalEndDate').val(res[0].endDate);
+        $('#editGoalStatus').val(res[0].status);
+        $('#goalID').attr('value',res[0].goalID);
     });
 
 }
